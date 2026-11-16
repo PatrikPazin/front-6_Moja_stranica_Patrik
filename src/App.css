@@ -1,0 +1,84 @@
+/* Ovdje pišeš vlastite stilove koji nadjačavaju Bootstrap.
+   Ovaj file se učitava nakon Bootstrapa, pa pobjeđuje kod jednake specifičnosti. */
+
+/* Font za cijelu stranicu (Bootstrap ga čita iz ove varijable).
+   Poppins je učitan u public/index.html; ostalo su rezervni fontovi. */
+:root {
+  --bs-body-font-family: 'Poppins', 'Century Gothic', 'Avant Garde', Futura, sans-serif;
+}
+
+body { background: var(--bs-tertiary-bg); }
+
+/* Visine mjesta za slike (Bootstrap nema klase za ovakve visine) */
+.hero { height: clamp(180px, 32vw, 380px); }
+.hero-footer { height: clamp(120px, 20vw, 240px); }
+
+/* Naslovi kartica: umjereno crvena pozadina, bijeli tekst (kontrast ~5:1) */
+:root { --naslov-bg: #b84a4a; --naslov-text: #ffffff; }
+.card-title {
+  background: var(--naslov-bg); color: var(--naslov-text);
+  width: fit-content; max-width: 100%; /* pozadina samo koliko i tekst */
+  padding: .5rem 5px; border-radius: .375rem;
+}
+
+/* Zaobljeni rubovi slike u kartici (zamjena za overflow-hidden) */
+.slika-kartice { border-radius: .375rem .375rem 0 0; }
+@media (min-width: 768px) { .slika-kartice { border-radius: .375rem 0 0 .375rem; } }
+
+/* Plutajući izbornik "Odaberi posao": iznad nižih kartica, bez produljivanja kartice */
+.izbornik-panel {
+  position: absolute; top: 100%; left: 0; right: 0; z-index: 10; margin-top: .25rem;
+  background: #fff; border: 1px solid var(--bs-border-color);
+  border-radius: .375rem; box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+/* Naslovi u izborniku: bez pozadine, svijetloplava tek na hover */
+.izbornik-panel .list-group-item { background: transparent; }
+.izbornik-panel .list-group-item-action:hover,
+.izbornik-panel .list-group-item-action:focus,
+.izbornik-panel .list-group-item-action:active { background: lightblue; color: inherit; }
+
+/* Klikabilna kartica u carouselu: tekst umjesto slike, otprilike pola prijašnje visine */
+.carousel-link {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 210px; padding: 1.5rem 1rem;
+  background: #fff; text-decoration: none;
+}
+/* Uređaji s mišem: bočni razmak da tekst ne ide pod rubne zone (80 px) */
+@media (hover: hover) and (pointer: fine) { .carousel-link { padding-inline: 90px; } }
+/* Dodirni uređaji (tablet, mobitel): bez rubnih zona, da povlačenje prstom radi */
+@media (hover: none), (pointer: coarse) { .rub-zona { display: none !important; } }
+/* crvena pozadina samo iza teksta */
+.carousel-tekst {
+  background: var(--naslov-bg); color: var(--naslov-text);
+  padding: .25rem 5px; border-radius: .375rem;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; /* pozadina prati svaki redak */
+  transition: background .2s;
+}
+.carousel-link:hover .carousel-tekst { background: #a03f3f; }
+
+/* Carousel: sporiji prijelaz između slajdova (Bootstrap default je .6s) */
+.carousel-item { transition: transform 1.2s ease-in-out; }
+
+/* --- PRISTUPAČNOST --- */
+/* Link "Preskoči na sadržaj": vidljiv samo kad dobije fokus tipkovnicom (Tab) */
+.skip-link {
+  position: absolute; left: .5rem; top: -4rem; z-index: 2000;
+  background: #fff; color: #000; padding: .5rem 1rem; border-radius: .375rem;
+  border: 2px solid #000; transition: top .15s;
+}
+.skip-link:focus { top: .5rem; }
+
+/* Jasan okvir fokusa za korisnike tipkovnice na svim elementima */
+a:focus-visible, button:focus-visible {
+  outline: 3px solid #0b5ed7; outline-offset: 2px;
+}
+/* Sadržaj prima fokus programski pri promjeni stranice, okvir mu ne treba */
+main:focus { outline: none; }
+
+/* Korisnici koji su u sustavu isključili animacije: bez klizanja i prijelaza */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-item, .carousel-tekst, .skip-link { transition: none !important; }
+}
+
+/* Aktivni link u navigaciji */
+.nav-link.active { font-weight: 600; border-bottom: 2px solid currentColor; }

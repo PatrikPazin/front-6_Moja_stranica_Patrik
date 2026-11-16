@@ -1,0 +1,64 @@
+:root{
+  --bg:#f5f6f3; --surface:#ffffff; --text:#1d2420; --muted:#5c6660;
+  --line:#d5dad4; --accent:#2f5d4a; --accent-bg:#e4efe9; --on-accent:#ffffff;
+  --ph:#e3e7e1; --ph-text:#7b857e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+
+/* HEADER */
+.header{background:var(--surface);border-bottom:1px solid var(--line)}
+.header-in{max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;
+  align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{font-weight:700;font-size:1.15rem;color:var(--text);text-decoration:none}
+.nav{display:flex;gap:22px;flex-wrap:wrap}
+.nav a{color:var(--muted);text-decoration:none;font-weight:500}
+.nav a:hover{color:var(--accent)}
+
+/* SLIKE (prazne kućice) */
+.ph{background:var(--ph);color:var(--ph-text);display:flex;align-items:center;justify-content:center}
+.hero{width:100%;height:clamp(180px,32vw,380px)}
+
+/* KARTICE */
+.wrap{max-width:1200px;margin:0 auto;padding:32px 20px 64px}
+.card{display:grid;grid-template-columns:repeat(12,1fr);background:var(--surface);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:16px}
+.card .ph{grid-column:span 2;min-height:120px}
+.card-body{grid-column:span 10;padding:18px 22px}
+.card h2{margin:0 0 4px;font-size:1.2rem}
+.card-desc{margin:0 0 12px;color:var(--muted)}
+
+/* GUMB ZA IZBORNIK */
+.toggle{width:100%;padding:12px 0;border:0;border-top:1px solid var(--line);
+  background:none;font:inherit;font-weight:600;color:var(--accent);
+  cursor:pointer;display:flex;justify-content:space-between}
+.toggle::after{content:"+"}
+.toggle[aria-expanded="true"]::after{content:"–"}
+
+/* OPCIJE U IZBORNIKU */
+.menu{list-style:none;margin:0 0 4px;padding:0;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.menu[hidden]{display:none}
+.menu li+li{border-top:1px solid var(--line)}
+.opt{width:100%;padding:11px 14px;border:0;background:none;font:inherit;
+  color:var(--text);text-align:left;cursor:pointer;transition:background .15s,padding-left .15s}
+.opt:hover{background:var(--accent-bg);color:var(--accent);padding-left:20px}
+.opt.aktivna{background:var(--accent);color:var(--on-accent)}
+
+/* DETALJ ODABRANE OPCIJE */
+.detail{margin-top:12px;padding:16px 18px;background:var(--accent-bg);border-radius:6px}
+.detail[hidden]{display:none}
+.detail h3{margin:0 0 6px;font-size:1.05rem}
+.detail h4{margin:14px 0 4px;font-size:.95rem}
+.detail p{margin:0}
+.detail ul{margin:0;padding-left:20px}
+
+/* PODNOŽJE */
+.footer{border-top:1px solid var(--line);background:var(--surface);
+  color:var(--muted);text-align:center;padding:24px}
+
+/* MOBITEL */
+@media (max-width:640px){
+  .card{grid-template-columns:1fr}
+  .card .ph,.card-body{grid-column:auto}
+}
