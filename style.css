@@ -27,7 +27,9 @@ body{margin:0;background:var(--bg);color:var(--text);
 .card .ph{grid-column:span 2;min-height:120px}
 .card-body{grid-column:span 10;padding:18px 22px}
 .card h2{margin:0 0 4px;font-size:1.2rem}
-.card-desc{margin:0 0 12px;color:var(--muted)}
+.card-body{min-width:0}
+/* sažetak je uvijek cijeli vidljiv i prelama se u više redaka */
+.card-desc{margin:0 0 12px;color:var(--muted);white-space:normal;overflow-wrap:anywhere}
 
 /* GUMB ZA IZBORNIK */
 .toggle{width:100%;padding:12px 0;border:0;border-top:1px solid var(--line);
@@ -35,6 +37,9 @@ body{margin:0;background:var(--bg);color:var(--text);
   cursor:pointer;display:flex;justify-content:space-between}
 .toggle::after{content:"+"}
 .toggle[aria-expanded="true"]::after{content:"–"}
+/* link koji izgleda kao gumb (blog) */
+a.toggle{box-sizing:border-box;text-decoration:none}
+a.toggle::after{content:"→"}
 
 /* OPCIJE U IZBORNIKU */
 .menu{list-style:none;margin:0 0 4px;padding:0;border:1px solid var(--line);border-radius:6px;overflow:hidden}

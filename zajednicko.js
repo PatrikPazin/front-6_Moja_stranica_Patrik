@@ -1,4 +1,4 @@
-// ---------- ZAJEDNIČKI DIJELOVI ----------
+ // ---------- ZAJEDNIČKI DIJELOVI ----------
 // Učitava se na svim stranicama, prije skripte same stranice (app.js, blog.js)
 
 // Linkovi vode na index.html jer se izbornik prikazuje i na blogu.

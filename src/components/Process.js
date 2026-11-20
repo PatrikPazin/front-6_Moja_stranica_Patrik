@@ -4,21 +4,31 @@ function Process() {
   return (
     <section className="container py-5">
       <h1 className="h2 mb-4">Postupak</h1>
-      <div className="row g-3">
-        {koraci.map(k => (
-          // 6 kolumni u redu na velikom ekranu (2/12), 3 na srednjem, 2 na malom
-          <div key={k.naslov} className="col-6 col-md-4 col-lg-2">
-            <div className="card h-100 overflow-hidden">
-              <div className="ratio ratio-16x9 bg-secondary-subtle text-secondary" aria-hidden="true">
-                <div className="d-flex align-items-center justify-content-center">slika</div>
-              </div>
-              <div className="card-body">
-                <h2 className="card-title h6">{k.naslov}</h2>
-                <p className="card-text small text-secondary mb-0">{k.opis}</p>
-              </div>
-            </div>
-          </div>
-        ))}
+
+      {/* kartice široke 4 kolone (od 992 px), u sredini; lijevo od njih strelica prema dolje s rednim brojevima */}
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-8 col-lg-4">
+          <ol className="list-unstyled mb-0">
+            {koraci.map((k, i) => (
+              <li
+                key={k.naslov}
+                className={"korak position-relative" + (i === koraci.length - 1 ? " korak-zadnji" : "")}
+              >
+                {/* strelica: crta kroz sve korake, broj uz svaku karticu, vrh strelice na kraju */}
+                <div className="korak-traka" aria-hidden="true">
+                  <span className="korak-broj">{i + 1}</span>
+                </div>
+
+                <div className="card">
+                  <div className="card-body">
+                    <h2 className="card-title h6">{k.naslov}</h2>
+                    <p className="card-text small text-secondary mb-0">{k.opis}</p>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );

@@ -7,14 +7,22 @@ import Header from './components/Header';
 import Services from './components/Services';
 import Process from './components/Process';
 import Blog from './components/Blog';
+import Slike from './components/Slike';
+import ONama from './components/ONama';
+import NoviKorisnik from './components/NoviKorisnik';
+import Prijava from './components/Prijava';
 import Info from './components/Info';
 import Footer from './components/Footer';
 
 // Naslovi stranica (čitač zaslona ih izgovori pri promjeni stranice)
 const naslovi = {
-  "/": "Usluge",
+  "/": "Početna",
+  "/login": "Prijava",
+  "/novi-korisnik": "Novi korisnik",
   "/postupak": "Postupak",
   "/blog": "Blog",
+  "/slike": "Slike",
+  "/o-nama": "O nama",
 };
 
 // Pri promjeni stranice: vrati prikaz na vrh, postavi naslov kartice preglednika
@@ -24,7 +32,7 @@ function PromjenaStranice({ glavniRef }) {
   const prvi = useRef(true);
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = `${naslovi[pathname] || "Informacije"} – Geodetski ured`;
+    document.title = `${naslovi[pathname] || "Informacije"} – GeoPatrik d.o.o.`;
     if (prvi.current) { prvi.current = false; return; } // ne otimaj fokus pri prvom učitavanju
     glavniRef.current?.focus({ preventScroll: true });
   }, [pathname, glavniRef]);
@@ -44,6 +52,10 @@ function App() {
           <Route path="/" element={<Services />} />
           <Route path="/postupak" element={<Process />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/slike" element={<Slike />} />
+          <Route path="/o-nama" element={<ONama />} />
+          <Route path="/login" element={<Prijava />} />
+          <Route path="/novi-korisnik" element={<NoviKorisnik />} />
           <Route path="/info/:slug" element={<Info />} />
         </Routes>
       </main>

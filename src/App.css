@@ -8,6 +8,16 @@
 }
 
 body { background: var(--bs-tertiary-bg); }
+/* Kartice na svim stranicama: 50% prozirna pozadina da se nazire slika stranice.
+   Prozirnost mijenjaš zadnjim brojem (0.5 = 50%). */
+.card {
+  --bs-card-bg: rgba(var(--bs-body-bg-rgb), 0.5);
+  --bs-card-border-width: 2px;
+  --bs-card-border-color: #000;
+}
+
+/* Ghost pozadina (slika iz public/images) je u public/index.html,
+   jer React u CSS-u ne smije pozivati slike iz public foldera. */
 
 /* Visine mjesta za slike (Bootstrap nema klase za ovakve visine) */
 .hero { height: clamp(180px, 32vw, 380px); }
@@ -19,11 +29,79 @@ body { background: var(--bs-tertiary-bg); }
   background: var(--naslov-bg); color: var(--naslov-text);
   width: fit-content; max-width: 100%; /* pozadina samo koliko i tekst */
   padding: .5rem 5px; border-radius: .375rem;
+  border: 3px solid #8b0000; /* tamnocrveni okvir (darkred) */
 }
+
+/* Podnaslov (opis) u karticama: crni tekst */
+.card .card-text { color: #000 !important; }
+
+/* Gumbi u karticama: okvir 2px, siva pozadina, malo podebljan font */
+.card .btn,
+.clanak-modal .btn,
+.clanak-panel .btn,
+.btn-group > .btn { /* btn-group = kontrole carousela */
+  --bs-btn-bg: #e2d6f5;          /* svijetloljubičasta (prije: pijesak #f3e3c3) */
+  --bs-btn-color: #146c43;       /* tamnija zelena radi čitljivosti */
+  --bs-btn-border-color: #000;   /* crni okvir */  --bs-btn-border-width: 2px;
+  --bs-btn-font-weight: 500; /* ~10% deblje od običnih 400 */
+}
+
+/* Blog: članak otvoren u sredini stranice preko svega */
+.clanak-pozadina {
+  position: fixed; inset: 0; z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem; background: rgba(0, 0, 0, .6);
+}
+.clanak-modal {
+  width: 100%; max-width: 900px; max-height: 90vh; overflow-y: auto;
+  background: #fff; border: 5px solid #000; border-radius: .5rem; padding: 1rem 1.5rem 1.5rem;
+}
+.clanak-modal:focus { outline: none; }
+
+/* Široki ekran: otvoreni članak u lijevoj polovici, zalijepljen uz vrh dok se popis pomiče */
+.clanak-panel {
+  position: sticky; top: 1rem; max-height: calc(100vh - 2rem); overflow-y: auto;
+  background: #fff; border: 5px solid #000; border-radius: .5rem; padding: 1rem 1.5rem 1.5rem;
+}
+.clanak-panel:focus { outline: none; }
+
+/* Postupak: strelica prema dolje lijevo od kartica, s rednim brojem uz svaku karticu */
+.korak { margin-bottom: 1.5rem; }
+.korak-zadnji { margin-bottom: 0; }
+.korak-traka {
+  position: absolute; top: 0; bottom: -1.5rem; /* produžena za razmak da se crta spoji sa sljedećim korakom */
+  left: -3.5rem; width: 3rem;
+  display: flex; justify-content: center;
+}
+.korak-zadnji .korak-traka { bottom: -.5rem; } /* zadnja završava vrhom strelice */
+.korak-traka::before { /* crta strelice (crna, 4px) */
+  content: ""; position: absolute; top: 0; bottom: 0; left: 50%;
+  width: 4px; transform: translateX(-50%); background: #000;
+}
+/* vrh strelice na sredini razmaka između dva broja (1,82rem x 1,17rem).
+   Broj je pri vrhu koraka (središte 1,85rem), pa je sredina između dva broja na 50% + 1,85rem. */
+.korak-traka::after {
+  content: ""; position: absolute; left: 50%; top: calc(50% + 1.85rem);
+  transform: translate(-50%, -50%);
+  border-left: .91rem solid transparent; border-right: .91rem solid transparent;
+  border-top: 1.17rem solid #000;
+}
+/* zadnji korak: vrh strelice na samom kraju */
+.korak-zadnji .korak-traka::after {
+  top: auto; bottom: -.78rem; transform: translateX(-50%);
+}
+.korak-broj {
+  position: relative; z-index: 1; margin-top: .75rem; width: 2.2rem; height: 2.2rem; flex: none;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; border: 3px solid #000; background: var(--naslov-bg); color: #fff; font-weight: 700; /* crni obrub (krug), crvena podloga, bijeli broj */
+}
+/* mali ekrani: kartice se pomaknu udesno da ostane mjesta za strelicu */
+.korak .card { --bs-card-border-width: 4px; } /* okvir kartica na stranici Postupak */
+@media (max-width: 767.98px) { .korak .card { margin-left: 3.5rem; } .korak-traka { left: 0; } }
 
 /* Zaobljeni rubovi slike u kartici (zamjena za overflow-hidden) */
 .slika-kartice { border-radius: .375rem .375rem 0 0; }
-@media (min-width: 768px) { .slika-kartice { border-radius: .375rem 0 0 .375rem; } }
+@media (min-width: 576px) { .slika-kartice { border-radius: .375rem 0 0 .375rem; } }
 
 /* Plutajući izbornik "Odaberi posao": iznad nižih kartica, bez produljivanja kartice */
 .izbornik-panel {
@@ -40,17 +118,36 @@ body { background: var(--bs-tertiary-bg); }
 /* Klikabilna kartica u carouselu: tekst umjesto slike, otprilike pola prijašnje visine */
 .carousel-link {
   display: flex; align-items: center; justify-content: center; text-align: center;
-  min-height: 210px; padding: 1.5rem 1rem;
-  background: #fff; text-decoration: none;
+  padding: 1.5rem 1rem; /* visinu određuje najviši tekst (vidi .carousel-mjerilo) */
+  background: transparent; text-decoration: none; /* potpuno proziran, bez okvira */
 }
-/* Uređaji s mišem: bočni razmak da tekst ne ide pod rubne zone (80 px) */
-@media (hover: hover) and (pointer: fine) { .carousel-link { padding-inline: 90px; } }
+/* Visina carousela = visina najvišeg teksta: nevidljivi mjerač slaže sve tekstove u istu ćeliju,
+   a pravi carousel (apsolutno pozicioniran) rasteže slajdove na tu visinu */
+.carousel-mjerilo { display: grid; visibility: hidden; }
+.carousel-mjerilo > * { grid-area: 1 / 1; }
+#usluge-carousel .carousel-inner,
+#usluge-carousel .carousel-item,
+#usluge-carousel .carousel-item > .row,
+#usluge-carousel .carousel-item > .row > *,
+#usluge-carousel .carousel-link { height: 100%; }
+#usluge-carousel .carousel-item > .row,
+#usluge-carousel .carousel-item > .row > * { margin-top: 0; }
+
+/* Strelice uz rub carousela (3,75% širine): klik = prethodni/sljedeći slajd */
+.rub-zona {
+  border: 0; background: transparent; color: #146c43; opacity: .35;
+  cursor: pointer; transition: opacity .2s, background .2s;
+}
+.rub-zona:hover, .rub-zona:focus-visible { opacity: 1; background: rgba(85, 85, 85, .2); }
+/* Uređaji s mišem: bočni razmak da tekst ne ide pod strelice (3,75% + malo) */
+@media (hover: hover) and (pointer: fine) { .carousel-link { padding-inline: calc(3.75% + 1rem); } }
 /* Dodirni uređaji (tablet, mobitel): bez rubnih zona, da povlačenje prstom radi */
 @media (hover: none), (pointer: coarse) { .rub-zona { display: none !important; } }
 /* crvena pozadina samo iza teksta */
 .carousel-tekst {
   background: var(--naslov-bg); color: var(--naslov-text);
   padding: .25rem 5px; border-radius: .375rem;
+  border: 3px solid #8b0000; /* tamnocrveni okvir kao naslovi kartica */
   -webkit-box-decoration-break: clone; box-decoration-break: clone; /* pozadina prati svaki redak */
   transition: background .2s;
 }
@@ -81,4 +178,66 @@ main:focus { outline: none; }
 }
 
 /* Aktivni link u navigaciji */
-.nav-link.active { font-weight: 600; border-bottom: 2px solid currentColor; }
+.nav-link.active { font-weight: 700; border-bottom: 3px solid currentColor; }
+
+/* Obrazac: simbol upozorenja u polju, tekst se prikaže ispod njega na hover/fokus */
+.polje-omot { position: relative; flex: 1 1 auto; min-width: 0; }
+.polje-omot .form-control.is-invalid { background-image: none; padding-right: 2.5rem; }
+.input-group > .polje-omot > .form-control { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.upozorenje { position: absolute; top: 50%; right: .5rem; transform: translateY(-50%); }
+.upozorenje-gumb { border: 0; background: none; padding: 0; line-height: 1; color: #dc3545; font-size: 1.1rem; cursor: help; }
+.upozorenje-tekst {
+  display: none; position: absolute; top: 100%; right: 0; margin-top: .4rem; z-index: 5;
+  width: max-content; max-width: min(18rem, 80vw); padding: .25rem .5rem; border-radius: .25rem;
+  background: #dc3545; color: #fff; font-size: .8rem;
+}
+.upozorenje:hover .upozorenje-tekst,
+.upozorenje-gumb:focus-visible + .upozorenje-tekst { display: block; }
+
+/* Gumb za prikaz lozinke: crni okvir 1px, bijela pozadina, jasno vidljivo oko */
+.gumb-oko { border: 1px solid #000; background-color: #fff; color: #000; font-size: 1.25rem; line-height: 1; }
+.gumb-oko:hover, .gumb-oko:active, .gumb-oko:focus-visible { background-color: #fff; color: #000; border-color: #000; }
+.gumb-oko:disabled { background-color: #fff; color: #000; border: 1px solid #000; opacity: .5; }
+
+/* Gumb "Registriraj se": crn */
+.gumb-crveni {
+  --bs-btn-bg: #000; --bs-btn-color: #fff; --bs-btn-border-color: #000; --bs-btn-border-width: 3px;
+  --bs-btn-hover-color: #fff; --bs-btn-active-color: #fff;
+  --bs-btn-font-weight: 500;
+}
+
+/* Hover na gumbu "Registriraj se": svjetlija (siva) boja; dok obrazac nije potpun, hover ne radi */
+.gumb-crveni { --bs-btn-hover-bg: #444; --bs-btn-hover-border-color: #000; --bs-btn-active-bg: #222; --bs-btn-active-border-color: #000; }
+.gumb-crveni.nepotpuno {
+  --bs-btn-hover-bg: #000; --bs-btn-active-bg: #000;
+  --bs-btn-hover-border-color: #000; --bs-btn-active-border-color: #000;
+}
+.gumb-omot { position: relative; display: inline-block; }
+.gumb-oblacic {
+  display: none; position: absolute; top: 100%; left: 0; margin-top: .4rem; z-index: 5;
+  width: max-content; max-width: min(18rem, 80vw); padding: .25rem .5rem; border-radius: .25rem;
+  background: #dc3545; color: #fff; font-size: .8rem;
+}
+.gumb-omot:hover .gumb-oblacic,
+.gumb-crveni:focus-visible + .gumb-oblacic { display: block; }
+
+/* Izbornik: kartice crne, a Logout ostaje plav */
+.navbar .nav-link { --bs-nav-link-color: #000; --bs-nav-link-hover-color: #333; }
+.navbar .nav-link.nav-logout { --bs-nav-link-color: #0d6efd; --bs-nav-link-hover-color: #0a58ca; }
+
+/* Naziv tvrtke: u sredini, crvena podloga (padding), crni okvir 4px, centriran tekst, mjesto za logo */
+.marka {
+  display: inline-flex; align-items: center; gap: .75rem; margin-right: 0; margin-bottom: 20px; /* razmak do izbornika */
+  background: var(--naslov-bg); color: var(--naslov-text);
+  padding: .75rem 1.25rem; border: 4px solid #000; text-align: center; font-weight: 700;
+}
+.marka:hover, .marka:focus-visible { color: var(--naslov-text); }
+.logo-mjesto {
+  display: flex; align-items: center; justify-content: center; flex: none;
+  width: 3.5rem; height: 3.5rem; background: #fff; color: #000;
+  border: 2px dashed #000; font-size: .8rem; font-weight: 400;
+}
+
+/* Izbornik: font 50% deblji (400 -> 600) */
+.navbar .nav-link { font-weight: 600; }
+.navbar .nav-link.active { font-weight: 700; }
