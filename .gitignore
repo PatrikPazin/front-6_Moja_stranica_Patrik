@@ -21,3 +21,11 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# originalne (velike) slike; stranica koristi smanjene -web kopije
+/public/images/blog-5.png
+/public/images/blog-3.png
+/public/images/main-1.jpg
+/public/images/main-2.jpg
+/public/images/main-3.jpg
+/public/images/main-4.jpg
