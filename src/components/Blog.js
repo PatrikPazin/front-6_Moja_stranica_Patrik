@@ -44,7 +44,11 @@ function Post({ clanak, id, aktivan, podijeljeno, onOtvori }) {
   return (
     <article className="card h-100 overflow-hidden">
       <div className="row g-0 h-100">
-        <SlikaClanka clanak={clanak} klasa="col-12 col-sm-4" minVisina={240} />
+        {/* slika s izvorom ispod nje (u otvorenom članku slike nema) */}
+        <div className="col-12 col-sm-4 d-flex flex-column bg-white">
+          <SlikaClanka clanak={clanak} klasa="flex-grow-1" minVisina={240} />
+          <Izvor tekst={clanak.izvor} razmak="mt-0 px-2 pb-1" />
+        </div>
         <div className="col-12 col-sm-8 card-body">
           <time dateTime={clanak.datum} className="text-black" style={{ fontSize: FONT_DATUM }}>
             {formatirajDatum(clanak.datum)}
@@ -78,19 +82,7 @@ function ClanakSadrzaj({ clanak, onZatvori }) {
         </button>
       </div>
 
-      {clanak.slika && (
-        <figure className="mb-3">
-          <div className="bg-white text-center rounded">
-            <img
-              src={clanak.slika} alt={clanak.slikaAlt || ""}
-              style={{ maxWidth: "100%", maxHeight: "45vh", objectFit: "contain" }}
-              className="p-2"
-            />
-          </div>
-          {/* izvor slike ispod slike */}
-          <Izvor tekst={clanak.izvor} />
-        </figure>
-      )}
+      {/* otvoreni članak je bez slike (slika se vidi samo na kartici u popisu) */}
 
       <time dateTime={clanak.datum} className="text-black" style={{ fontSize: FONT_DATUM }}>{formatirajDatum(clanak.datum)}</time>
       <h2 id="clanak-naslov" className="card-title" style={{ fontSize: FONT_NASLOV_CLANKA, marginBottom: RAZMAK_NASLOV }}>{clanak.naslov}</h2>
@@ -180,7 +172,7 @@ function Blog() {
   // redni broj otvorenog članka (null = nijedan)
   const [otvoreniId, setOtvoreniId] = useState(null);
   const veliki = useVeliki();
-  const podijeljeno = veliki && otvoreniId !== null; // lijevo članak, desno popis
+  const podijeljeno = veliki && otvoreniId !== null; // lijevo popis, desno članak
 
   // zatvaranje u podijeljenom prikazu: fokus se vraća na gumb tog članka
   const zatvoriPanel = () => {
@@ -205,7 +197,7 @@ function Blog() {
             razmaknute + križ + crvena točka) je vezan uz slovo "o", pa mu je sredina točno u sredini tog slova.
             Promjer = 3,6 puta veličina slova. Gornji i donji padding (1,3em) rezervira mjesto za kružnicu,
             da ne ulazi u header ni u podnaslov. */}
-        <h1
+        <h2
           aria-label="Blog"
           className="h2 mb-0"
           style={{
@@ -251,18 +243,18 @@ function Blog() {
             </span>
             g
           </span>
-        </h1>
+        </h2>
         <p className="text-black mb-0" style={{ fontSize: "clamp(1.1rem, 3vw, 2rem)" }}>Savjeti i objašnjenja geodetskih postupaka.</p>
       </div>
 
       {podijeljeno ? (
-        /* široki ekran, članak otvoren: lijeva polovica = članak, desna = popis članaka */
+        /* široki ekran, članak otvoren: lijeva polovica = popis članaka, desna = otvoreni članak */
         <div className="row g-3">
           <div className="col-lg-6">
-            <ClanakPanel key={otvoreniId} clanak={clanci[otvoreniId]} onZatvori={zatvoriPanel} />
+            <div className="d-flex flex-column gap-3">{popis}</div>
           </div>
           <div className="col-lg-6">
-            <div className="d-flex flex-column gap-3">{popis}</div>
+            <ClanakPanel key={otvoreniId} clanak={clanci[otvoreniId]} onZatvori={zatvoriPanel} />
           </div>
         </div>
       ) : (

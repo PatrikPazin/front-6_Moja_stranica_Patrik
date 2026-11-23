@@ -23,6 +23,16 @@ body { background: var(--bs-tertiary-bg); }
 .hero { height: clamp(180px, 32vw, 380px); }
 .hero-footer { height: clamp(120px, 20vw, 240px); }
 
+/* Podnožje: gornja polovica (društvene mreže) i donja (kontakt, slika) */
+.podnozje-gore { min-height: 90px; }
+.podnozje-dolje { border-top: 1px solid #000; padding: 20px 8.3333% 0; } /* bočne margine = jedna kolona od 12 */
+.podnozje-dno { border-top: 5px solid #dc3545; }
+/* Kartica s logom: bijela pozadina i obični crni obrub od 5px */
+.podnozje-slika { background: #fff; border: 5px solid #000; border-radius: 0; padding: .5rem; }
+.logo-svg { display: block; width: 100%; height: auto; max-height: 10rem; }
+.gumb-mreza { width: 3rem; height: 3rem; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #000; background: var(--boja); color: #fff; border-radius: 50%; font-size: 1.4rem; }
+.gumb-mreza:hover, .gumb-mreza:focus-visible { background: var(--boja); color: #fff; border-color: #000; filter: brightness(1.15); }
+
 /* Naslovi kartica: umjereno crvena pozadina, bijeli tekst (kontrast ~5:1) */
 :root { --naslov-bg: #b84a4a; --naslov-text: #ffffff; }
 .card-title {
@@ -241,3 +251,70 @@ main:focus { outline: none; }
 /* Izbornik: font 50% deblji (400 -> 600) */
 .navbar .nav-link { font-weight: 600; }
 .navbar .nav-link.active { font-weight: 700; }
+
+/* Header: kontakt u sredini prvog reda, logo lijevo */
+.navbar:has(> .header-kontakt) { padding-top: 0; }
+.header-kontakt { width: 100%; background: #fff; border-bottom: 2px solid #dc3545; margin: 0; padding: 20px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 2rem; font-style: normal; }
+.header-logo { display: block; width: 100%; max-width: 20rem; }
+
+/* Header: logo + izbornik. Načine (red / ispod / hamburger) bira Header.js prema širini */
+.navbar-toggler { border: 2px solid #000; background: #fff; }
+.header-red { width: 100%; display: flex; align-items: center; gap: 16px; }
+.header-logo { display: block; width: 20rem; max-width: 100%; flex: none; }
+.izbornik { flex-wrap: nowrap; white-space: nowrap; justify-content: flex-end; align-items: flex-end; }
+.header-red.header-red > .izbornik, .header-red.header-ispod > .izbornik { margin-left: auto; }
+.header-ispod { flex-direction: column; align-items: stretch; }
+.header-ispod .header-logo { align-self: flex-start; }
+.header-hamburger { flex-wrap: wrap; }
+.header-hamburger .header-logo { width: 14rem; max-width: calc(100% - 4.5rem); flex: none; }
+.header-hamburger .navbar-toggler { margin-left: auto; font-size: clamp(.625rem, 5vw, 1.25rem); padding: .25em 1.5em; }
+.header-hamburger .izbornik { flex: 1 1 100%; flex-direction: column; align-items: stretch; text-align: right; border-top: 2px solid #dc3545; padding-top: .5rem; white-space: normal; }
+.izbornik-mjera { position: absolute; visibility: hidden; pointer-events: none; height: 0; overflow: hidden; width: max-content; }
+@media (max-width: 767.98px) {
+  .header-kontakt { flex-direction: column; align-items: center; gap: .25rem; padding: 12px 0; }
+}
+
+/* Carousel: razmaci iznad i ispod se smanjuju s ekranom, ali nikad ne nestaju */
+.carousel-zona { padding-top: clamp(.375rem, 1.5vw, 1rem); }
+.carousel-omot { margin: 0; padding-bottom: clamp(.5rem, 2vw, 1.5rem); }
+/* Veliki ekran: tekst u carouselu i njegova crvena pozadina dvostruko veći (širina i visina) */
+@media (min-width: 992px) {
+  .carousel-link { font-size: 3rem; line-height: 1.2; }
+  .carousel-tekst { padding: .17em .2em; border-width: 6px; }
+}
+
+.podnozje-sredina { padding: 0; justify-content: center; text-align: center; }
+
+/* Gumb "Natrag na vrh": lijevo, iznad podnožja, crn; na hover blago crven */
+.natrag-omot { margin-top: 3rem; display: flex; justify-content: flex-end; }
+.natrag-omot + .podnozje { margin-top: 1rem !important; }
+.natrag-na-vrh {
+  background: #000; color: #fff; border: 1px solid #000; border-radius: .375rem;
+  padding: .5rem 1rem; font-weight: 600; transition: background .2s;
+}
+.natrag-na-vrh:hover, .natrag-na-vrh:focus-visible { background: var(--naslov-bg); color: #fff; border-color: #000; }
+
+/* Klikabilan naslov kartice: na hover svijetlocrvena pozadina (tamni tekst radi kontrasta) */
+a.naslov-link { text-decoration: none; transition: background .2s, color .2s; }
+a.naslov-link:hover, a.naslov-link:focus-visible { background: #f4b6b6; color: #000; }
+
+/* Gumb "Pošaljite upit" u podnožju: crn, na hover blago crven */
+.gumb-upit { background: #000; color: #fff; border: 1px solid #000; border-radius: .375rem; padding: .5rem 1rem; font-weight: 600; transition: background .2s; }
+.gumb-upit:hover, .gumb-upit:focus-visible { background: var(--naslov-bg); color: #fff; border-color: #000; }
+
+/* Header je od ostatka stranice odvojen crvenom linijom od 5px */
+header { border-bottom: 5px solid #dc3545; }
+
+/* Crvena linija od 5px i iznad carousela (preko cijele širine) */
+.carousel-pojas { border-top: 5px solid #dc3545; }
+
+/* Logo je u headeru i podnožju iste veličine (20rem, na uskim ekranima manje) */
+.logo-okvir { width: 20rem; max-width: 100%; }
+
+/* Cijela stranica: bočne margine su široke jednu kolonu od 12 (8,33%) i s lijeve i s desne strane.
+   Pozadine i crvene linije idu preko cijele širine, a sadržaj je uvučen. */
+.container, .natrag-omot { max-width: none; padding-left: 8.3333%; padding-right: 8.3333%; }
+
+/* Jedinstvena stranica: sekcije jedna ispod druge, tanka crta između njih */
+.sekcija { scroll-margin-top: 1rem; }
+.sekcija + .sekcija { border-top: 1px solid rgba(0, 0, 0, .25); }

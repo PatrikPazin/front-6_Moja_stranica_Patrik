@@ -61,8 +61,8 @@ function Carousel() {
   );
 
   return (
-    <div className="row justify-content-center mb-5">
-    <div className="col-12 col-lg-6">
+    <div className="row justify-content-center carousel-omot">
+    <div className="col-12 col-lg-8">
       <div
         className="position-relative"
         onMouseEnter={pauzirajPrivremeno}

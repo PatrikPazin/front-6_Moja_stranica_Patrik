@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom';
 import { koraci } from '../data';
 
 function Process() {
   return (
     <section className="container py-5">
-      <h1 className="h2 mb-4">Postupak</h1>
+      <h2 className="h2 mb-4">Postupak</h2>
 
       {/* kartice široke 4 kolone (od 992 px), u sredini; lijevo od njih strelica prema dolje s rednim brojevima */}
       <div className="row justify-content-center">
@@ -21,7 +22,12 @@ function Process() {
 
                 <div className="card">
                   <div className="card-body">
-                    <h2 className="card-title h6">{k.naslov}</h2>
+                    {/* naslov je poveznica ako korak ima "to"; na hover svijetlocrvena pozadina */}
+                    <h2 className="h6 mb-2">
+                      {k.to
+                        ? <Link to={k.to} className="card-title naslov-link d-inline-block mb-0">{k.naslov}</Link>
+                        : <span className="card-title d-inline-block mb-0">{k.naslov}</span>}
+                    </h2>
                     <p className="card-text small text-secondary mb-0">{k.opis}</p>
                   </div>
                 </div>

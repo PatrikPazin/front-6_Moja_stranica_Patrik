@@ -1,11 +1,10 @@
 // Svi sadržaji stranice na jednom mjestu. Zamijeni tekstove svojima.
 
 export const linkovi = [
-  { naziv: "Početna", to: "/" },
-  { naziv: "Postupak", to: "/postupak" },
-  { naziv: "Blog", to: "/blog" },
-  { naziv: "Slike", to: "/slike" },
-  { naziv: "O nama", to: "/o-nama" },
+  { naziv: "Početna", to: "/#pocetna", sekcija: "pocetna" },
+  { naziv: "Postupak", to: "/#postupak", sekcija: "postupak" },
+  { naziv: "Blog", to: "/#blog", sekcija: "blog" },
+  { naziv: "O nama", to: "/#o-nama", sekcija: "o-nama" },
   { naziv: "Prijava", to: "/login" },
   { naziv: "Novi korisnik", to: "/novi-korisnik" },
 ];
@@ -101,14 +100,12 @@ export const usluge = [
 
 // Koraci postupka, od upita do predaje dokumentacije
 export const koraci = [
-  { naslov: "Upit", opis: "Opišite nam što vam treba i kako vam možemo pomoći" },
-  { naslov: "Ponuda", opis: "Ponudu šaljemo u roku od tjedan dana od dogovora" },
-  { naslov: "Teren", opis: "Geodet dolazi na vašu česticu i obavlja izmjeru" },
-  { naslov: "Obrada podataka", opis: "Obrađujemo izmjerene podatke i radimo analizu s dostupnim arhivskim podacima katastra" },
-  { naslov: "Elaborat/Podloga", opis: "Izrada elaborata ili posebnih podloga" },
-  { naslov: "Ovjera", opis: "Elaborat ovjerava nadležni katastarski ured" },
-  { naslov: "Provedba", opis: "Nakon podnošenja zahtjeva za provedbu, katastar mijenja podatke u katastarskom operatu prema podacima iz elaborata" },
-  { naslov: "Predaja", opis: "Gotovu dokumentaciju predajemo vama osobno" },
+  // "to" = stranica na koju vodi naslov kartice (bez "to" naslov nije klikabilan)
+  { naslov: "Upit i ponuda", opis: "Opišite nam što vam treba i kako vam možemo pomoći. Ponudu šaljemo u roku od tjedan dana od dogovora.", to: "/#o-nama" },
+  { naslov: "Teren i obrada podataka", opis: "Geodet dolazi na vašu česticu i obavlja izmjeru. Obrađujemo izmjerene podatke i radimo analizu s dostupnim arhivskim podacima katastra." },
+  { naslov: "Elaborat/Podloga", opis: "Izrada elaborata ili posebnih podloga", to: "/#blog" },
+  { naslov: "Ovjera i provedba", opis: "Elaborat ovjerava nadležni katastarski ured. Nakon podnošenja zahtjeva za provedbu, katastar mijenja podatke u katastarskom operatu prema podacima iz elaborata." },
+  { naslov: "Predaja", opis: "Gotovu dokumentaciju predajemo vama osobno", to: "/#blog" },
 ];
 
 // Najnoviji članak ide prvi. Datum je GGGG-MM-DD.

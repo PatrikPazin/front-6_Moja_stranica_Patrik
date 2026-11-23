@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
 import { oNama, kontakt } from '../data';
 
 function ONama() {
   return (
     <section className="container py-5">
-      <h1 className="h2 mb-3">O nama</h1>
+      <h2 className="h2 mb-3">O nama</h2>
       <p className="text-black mb-4">{oNama.uvod}</p>
 
       <div className="row g-3 mb-4">
@@ -26,7 +25,6 @@ function ONama() {
         Tel: <a href={`tel:${kontakt.tel.replace(/\s/g, '')}`}>{kontakt.tel}</a><br />
         E-pošta: <a href={`mailto:${kontakt.email}`}>{kontakt.email}</a>
       </address>
-      <Link to="/postupak" className="btn btn-outline-success">Pogledajte postupak</Link>
     </section>
   );
 }

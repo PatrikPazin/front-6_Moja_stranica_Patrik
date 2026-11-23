@@ -132,7 +132,7 @@ const U_POPISU = usluge;             // kartice ispod carousela
 function Services() {
   return (
     <section className="container py-5">
-      <h1 className="h2 mb-4">Primjeri poslova u geodeziji</h1>
+      <h2 className="h2 mb-4">Primjeri poslova u geodeziji</h2>
       {/* 2 kartice po retku na velikim ekranima, 1 na manjim */}
       <div className="row g-3">
         {U_POPISU.map(u => (
