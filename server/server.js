@@ -2,13 +2,20 @@
 // Pokretanje: npm run server   (uz njega u drugom terminalu: npm start)
 // Svaki upit se dopisuje u datoteku podaci/upiti.json.
 //
-// KASNIJE: kad stranica bude na pravom poslužitelju, ovdje se (na mjestu označenom
-// "E-POŠTA") dodaje slanje upita na tvoju e-mail adresu, npr. paketom nodemailer.
-// Datoteka ostaje kao sigurnosna kopija.
+// E-POŠTA: nakon spremanja upit se šalje i na tvoju adresu preko servisa Resend (resend.com).
+// Postavke su u datoteci .env (vidi .env.example). Bez ključa (RESEND_API_KEY) upit se samo sprema u datoteku.
+// Datoteka podaci/upiti.json ostaje kao sigurnosna kopija.
 
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const { Resend } = require("resend");
+
+try { process.loadEnvFile(path.join(__dirname, "..", ".env")); } catch { /* .env još ne postoji: e-pošta je isključena */ }
+const KLJUC = process.env.RESEND_API_KEY;
+const ADRESA_ZA_UPITE = process.env.UPIT_EMAIL_NA;                       // kamo stižu upiti (tvoja adresa)
+const POSILJATELJ = process.env.UPIT_EMAIL_OD || "Upiti sa stranice <onboarding@resend.dev>"; // za probu; za pravu stranicu adresa s tvoje domene
+const resend = KLJUC && ADRESA_ZA_UPITE ? new Resend(KLJUC) : null;
 
 const PORT = process.env.PORT || 5000;
 const MAPA = path.join(__dirname, "..", "podaci");
@@ -62,6 +69,27 @@ function provjeri(p) {
   return { upit: { ime, email, telefon, opis } };
 }
 
+// Šalje upit na našu adresu. "reply-to" je adresa posjetitelja, pa odgovor ide izravno njemu.
+async function posaljiEmail(u) {
+  if (!resend) { console.log("E-pošta isključena (nema RESEND_API_KEY ili UPIT_EMAIL_NA u .env). Upit je samo spremljen."); return false; }
+  const bezRedaka = t => t.replace(/[\r\n]+/g, " ");
+  const { error } = await resend.emails.send({
+    from: POSILJATELJ,
+    to: [ADRESA_ZA_UPITE],
+    replyTo: u.email,
+    subject: `Novi upit: ${bezRedaka(u.ime)}`,
+    text: `Ime i prezime: ${u.ime}
+E-mail: ${u.email}
+Telefon: ${u.telefon || "-"}
+
+Opis upita:
+${u.opis}
+`,
+  });
+  if (error) { console.error("Slanje e-pošte nije uspjelo:", error); return false; }
+  return true;
+}
+
 function odgovori(res, status, tijelo) {
   res.writeHead(status, { "Content-Type": "application/json; charset=utf-8" });
   res.end(JSON.stringify(tijelo));
@@ -87,8 +115,9 @@ const server = http.createServer((req, res) => {
     const upit = { primljeno: new Date().toISOString(), ...rez.upit };
     try {
       await spremi(upit);
-      // E-POŠTA: ovdje dodati slanje upita na tvoju adresu (npr. nodemailer).
-      odgovori(res, 201, { ok: true });
+      // upit je spremljen; ako e-pošta zakaže, posjetitelj ipak dobije potvrdu (upit nije izgubljen)
+      const poslano = await posaljiEmail(upit).catch(e => { console.error("Slanje e-pošte nije uspjelo:", e); return false; });
+      odgovori(res, 201, { ok: true, email: poslano });
     } catch (e) {
       console.error("Spremanje upita nije uspjelo:", e);
       odgovori(res, 500, { greska: "Upit nije spremljen." });

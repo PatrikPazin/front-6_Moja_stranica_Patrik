@@ -32,3 +32,5 @@ yarn-error.log*
 
 # upiti posjetitelja (osobni podaci), ne idu na Git
 /podaci
+# tajni ključevi (e-pošta)
+.env
