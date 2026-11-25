@@ -6,8 +6,9 @@ export const linkovi = [
   { naziv: "Blog", to: "/#blog", sekcija: "blog" },
   { naziv: "O nama", to: "/#o-nama", sekcija: "o-nama" },
   { naziv: "Kontaktirajte nas", to: "/#kontakt", sekcija: "kontakt" },
-  { naziv: "Prijava", to: "/login" },
-  { naziv: "Novi korisnik", to: "/novi-korisnik" },
+  // Privremeno skriveno iz izbornika (stranice /login i /novi-korisnik i dalje postoje). Odkomentiraj za povratak:
+  // { naziv: "Prijava", to: "/login" },
+  // { naziv: "Novi korisnik", to: "/novi-korisnik" },
 ];
 
 // Stranica "Slike". Svaka slika: src (npr. "/images/slika-1.jpg", iz public/images),
