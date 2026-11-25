@@ -110,8 +110,8 @@ body { background: var(--bs-tertiary-bg); }
 @media (max-width: 767.98px) { .korak .card { margin-left: 3.5rem; } .korak-traka { left: 0; } }
 
 /* Zaobljeni rubovi slike u kartici (zamjena za overflow-hidden) */
-.slika-kartice { border-radius: .375rem .375rem 0 0; }
-@media (min-width: 576px) { .slika-kartice { border-radius: .375rem 0 0 .375rem; } }
+.slika-kartice { border-radius: .375rem .375rem 0 0; border-bottom: 1px solid #000; } /* crta 1px između slike i ostatka kartice */
+@media (min-width: 576px) { .slika-kartice { border-radius: .375rem 0 0 .375rem; border-bottom: 0; border-right: 1px solid #000; } }
 
 /* Plutajući izbornik "Odaberi posao": iznad nižih kartica, bez produljivanja kartice */
 .izbornik-panel {
@@ -286,9 +286,8 @@ main:focus { outline: none; }
 .podnozje-sredina { padding: 0; justify-content: center; text-align: center; }
 
 /* Gumb "Natrag na vrh": lijevo, iznad podnožja, crn; na hover blago crven */
-.natrag-omot { margin-top: 3rem; display: flex; justify-content: flex-end; }
-.natrag-omot + .podnozje { margin-top: 1rem !important; }
 .natrag-na-vrh {
+  position: fixed; right: 20px; bottom: 50px; z-index: 1030;
   background: #000; color: #fff; border: 1px solid #000; border-radius: .375rem;
   padding: .5rem 1rem; font-weight: 600; transition: background .2s;
 }
@@ -313,8 +312,22 @@ header { border-bottom: 5px solid #dc3545; }
 
 /* Cijela stranica: bočne margine su široke jednu kolonu od 12 (8,33%) i s lijeve i s desne strane.
    Pozadine i crvene linije idu preko cijele širine, a sadržaj je uvučen. */
-.container, .natrag-omot { max-width: none; padding-left: 8.3333%; padding-right: 8.3333%; }
+.container { max-width: none; padding-left: 8.3333%; padding-right: 8.3333%; }
 
-/* Jedinstvena stranica: sekcije jedna ispod druge, tanka crta između njih */
-.sekcija { scroll-margin-top: 1rem; }
-.sekcija + .sekcija { border-top: 1px solid rgba(0, 0, 0, .25); }
+/* Jedinstvena stranica: sekcije jedna ispod druge, bez crte između njih */
+.sekcija { scroll-margin-top: 3.5rem; } /* ostavlja vidljivu traku izbornika iznad sekcije */
+
+/* Izjava o privatnosti: oznake za tekst koji treba dopuniti */
+.privatnost mark { background: #fff3a3; padding: 0 .25em; }
+
+/* Traka između sekcija: bez pozadine i bez crta, stapa se sa stranicom */
+.sekcija-traka { margin: 0; padding: .25rem 8.3333%; background: transparent; border: 0; }
+
+/* O nama i Kontaktirajte nas: jedna do druge na širokom zaslonu */
+.sekcije-uz-sebe { padding: 0 8.3333%; }
+.sekcije-uz-sebe .container { padding-left: 0; padding-right: 0; }
+@media (min-width: 992px) {
+  .sekcije-uz-sebe { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+}
+/* Kontakt: sav tekst crn (gumb ostaje bijel na crnom, poruke o pogrešci crvene) */
+.kontakt-crno h2, .kontakt-crno label, .kontakt-crno .text-secondary, .kontakt-crno .form-control { color: #000 !important; }

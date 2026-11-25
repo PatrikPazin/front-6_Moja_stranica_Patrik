@@ -37,20 +37,23 @@ export const mailtoAdresa = `mailto:${kontakt.email}`;
 // ---------------------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------------------
-// NAČIN 3 (KAD BUDE SERVER): upit se šalje na naš poslužitelj (REST API), koji ga
-// proslijedi na našu e-mail adresu. Korisnik ne treba nikakav e-mail program.
-//
-// export async function posaljiUpit({ ime, email, poruka }) {
-//   const odgovor = await fetch("/api/upit", {           // adresu prilagodi svom poslužitelju
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({ ime, email, poruka }),
-//   });
-//   if (!odgovor.ok) throw new Error("Upit nije poslan. Pokušajte ponovno.");
-//   return odgovor.json();
-// }
-//
-// Poslužitelj mora: provjeriti i očistiti unos, ograničiti broj upita (rate limit),
-// po mogućnosti CAPTCHA, i poslati poruku na kontakt.email.
-// Tada u Footeru umjesto poveznice ide gumb koji otvara obrazac (ime, e-mail, poruka).
+// NAČIN 3 (AKTIVAN u obrascu "Kontaktirajte nas"): upit se šalje našem poslužitelju
+// (server/server.js), koji ga sprema u podaci/upiti.json. Kad stranica bude na pravom
+// poslužitelju, isti poslužitelj upit proslijedi i na našu e-mail adresu.
 // ---------------------------------------------------------------------------------------
+export async function posaljiUpit({ ime, email, telefon, opis }) {
+  let odgovor;
+  try {
+    odgovor = await fetch("/api/upit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ime, email, telefon, opis }),
+    });
+  } catch {
+    throw new Error("Poslužitelj nije dostupan. Pokušajte kasnije.");
+  }
+  if (!odgovor.ok) {
+    const { greska } = await odgovor.json().catch(() => ({}));
+    throw new Error(greska || "Upit nije poslan. Pokušajte ponovno.");
+  }
+}

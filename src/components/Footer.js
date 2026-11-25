@@ -55,7 +55,7 @@ function Footer() {
       </div>
 
       {/* donja polovica: ikone društvenih mreža u sredini */}
-      <div className="podnozje-gore podnozje-dno d-flex justify-content-center align-items-center">
+      <div className="podnozje-gore podnozje-dno d-flex flex-column justify-content-center align-items-center gap-2 py-3">
         <ul className="list-unstyled d-flex flex-wrap justify-content-center gap-3 m-0 p-0" aria-label="Društvene mreže">
           {mreze.map(({ naziv, Ikona, boja }) => (
             <li key={naziv}>
@@ -65,6 +65,7 @@ function Footer() {
             </li>
           ))}
         </ul>
+        <Link to="/privatnost" className="text-black">Izjava o privatnosti</Link>
       </div>
     </footer>
   );

@@ -1,8 +1,8 @@
-// Logo tvrtke: raširen stativ s totalnom stanicom + naziv "GeoPatrik"
+// Logo tvrtke: izmjerna markica + naziv "GeoPiket"
 function Logo() {
   return (
     <svg viewBox="0 0 300 160" role="img" aria-labelledby="logo-naslov" className="logo-svg">
-      <title id="logo-naslov">GeoPatrik d.o.o. za geodetske usluge</title>
+      <title id="logo-naslov">GeoPiket d.o.o. za geodetske usluge</title>
 
       {/* geodetska izmjerna markica (pogled odozgo): vanjska kružnica, jedna unutarnja kružnica
           i križ u sredini koji ide do vanjskog ruba */}
@@ -15,7 +15,7 @@ function Logo() {
 
       {/* naziv */}
       <text x="128" y="78" fontSize="34" fontWeight="800" fontFamily="Arial, Helvetica, sans-serif" textLength="165" lengthAdjust="spacingAndGlyphs">
-        <tspan fill="#000">Geo</tspan><tspan fill="#dc3545">Patrik</tspan>
+        <tspan fill="#000">Geo</tspan><tspan fill="#dc3545">Piket</tspan>
       </text>
       <line x1="128" y1="90" x2="293" y2="90" stroke="#000" strokeWidth="2" />
       <text x="128" y="108" fontSize="12" fontWeight="600" fontFamily="Arial, Helvetica, sans-serif" fill="#000" textLength="165" lengthAdjust="spacingAndGlyphs">

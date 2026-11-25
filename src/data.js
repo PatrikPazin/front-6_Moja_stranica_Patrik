@@ -5,6 +5,7 @@ export const linkovi = [
   { naziv: "Postupak", to: "/#postupak", sekcija: "postupak" },
   { naziv: "Blog", to: "/#blog", sekcija: "blog" },
   { naziv: "O nama", to: "/#o-nama", sekcija: "o-nama" },
+  { naziv: "Kontaktirajte nas", to: "/#kontakt", sekcija: "kontakt" },
   { naziv: "Prijava", to: "/login" },
   { naziv: "Novi korisnik", to: "/novi-korisnik" },
 ];

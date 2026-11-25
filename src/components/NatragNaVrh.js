@@ -1,15 +1,14 @@
-// Gumb lijevo, iznad podnožja, na svakoj stranici: vraća na vrh stranice
+// Gumb učvršćen 20px od donjeg i desnog ruba preglednika: putuje uz pomicanje stranice
+// i vraća na vrh. Prikazuje se jednom (App.js), na svim stranicama.
 function NatragNaVrh() {
   const naVrh = () => {
     const mirno = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top: 0, behavior: mirno ? "auto" : "smooth" });
   };
   return (
-    <div className="container-fluid natrag-omot">
-      <button type="button" className="btn natrag-na-vrh" onClick={naVrh}>
-        Natrag na vrh
-      </button>
-    </div>
+    <button type="button" className="btn natrag-na-vrh" onClick={naVrh}>
+      Natrag na vrh
+    </button>
   );
 }
 

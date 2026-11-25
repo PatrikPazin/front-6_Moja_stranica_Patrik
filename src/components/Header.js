@@ -5,7 +5,7 @@ import { linkovi, kontakt } from '../data';
 import { Telephone, Phone, Envelope } from 'react-bootstrap-icons';
 import Logo from './Logo';
 import NavStavka from './NavStavka';
-import Carousel from './Carousel';
+// import Carousel from './Carousel'; // odkomentiraj za povratak carousela
 
 function Header() {
   const ime = useImePrijavljenog();
@@ -59,7 +59,7 @@ function Header() {
         <div className="container pt-3">
           {/* logo + izbornik: red -> izbornik ispod loga -> hamburger, ovisno o raspoloživoj širini */}
           <div ref={redRef} className={"header-red header-" + nacin}>
-            <Link to="/" className="header-logo podnozje-slika logo-okvir" aria-label="GeoPatrik – početna stranica">
+            <Link to="/" className="header-logo podnozje-slika logo-okvir" aria-label="GeoPiket – početna stranica">
               <Logo />
             </Link>
             {nacin === "hamburger" && (
@@ -86,12 +86,14 @@ function Header() {
         </div>
       </nav>
 
-      {/* carousel umjesto prijašnje slike */}
+      {/* CAROUSEL JE PRIVREMENO UKLONJEN. Za vraćanje: odkomentiraj import na vrhu datoteke
+          i ovaj blok (ukloni oznake komentara oko njega).
       <div className="carousel-pojas">
         <div className="container carousel-zona">
           <Carousel />
         </div>
       </div>
+      */}
     </header>
   );
 }

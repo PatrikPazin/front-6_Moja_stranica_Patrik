@@ -9,6 +9,7 @@ import NoviKorisnik from './components/NoviKorisnik';
 import Prijava from './components/Prijava';
 import Info from './components/Info';
 import UIzradi from './components/UIzradi';
+import Privatnost from './components/Privatnost';
 import Footer from './components/Footer';
 import NatragNaVrh from './components/NatragNaVrh';
 
@@ -18,6 +19,7 @@ const naslovi = {
   "/login": "Prijava",
   "/novi-korisnik": "Novi korisnik",
   "/u-izradi": "Stranica u izradi",
+  "/privatnost": "Izjava o privatnosti",
 };
 
 // Pri promjeni stranice: vrati prikaz na vrh, postavi naslov kartice preglednika
@@ -54,6 +56,7 @@ function App() {
           <Route path="/novi-korisnik" element={<NoviKorisnik />} />
           <Route path="/info/:slug" element={<Info />} />
           <Route path="/u-izradi" element={<UIzradi />} />
+          <Route path="/privatnost" element={<Privatnost />} />
         </Routes>
       </main>
       <NatragNaVrh />

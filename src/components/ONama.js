@@ -6,18 +6,11 @@ function ONama() {
       <h2 className="h2 mb-3">O nama</h2>
       <p className="text-black mb-4">{oNama.uvod}</p>
 
-      <div className="row g-3 mb-4">
-        {oNama.vrijednosti.map(v => (
-          <div key={v.naslov} className="col-12 col-md-4">
-            <div className="card h-100">
-              <div className="card-body">
-                <h2 className="card-title h6">{v.naslov}</h2>
-                <p className="card-text small text-secondary mb-0">{v.opis}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      {oNama.vrijednosti.map(v => (
+        <p key={v.naslov} className="text-black mb-4">
+          <strong>{v.naslov}.</strong> {v.opis}
+        </p>
+      ))}
 
       <h2 className="h5">Kontakt</h2>
       <address className="text-black">
