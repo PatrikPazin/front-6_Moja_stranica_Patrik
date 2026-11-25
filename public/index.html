@@ -29,14 +29,14 @@
     <!-- Font Poppins se učitava s našeg poslužitelja (paket @fontsource/poppins u src/index.js), bez Googlea -->
 
     <!-- Ghost pozadina preko cijelog ekrana: slika stoji na mjestu, sadržaj se pomiče.
-         Prozirnost (opacity): 0.05 = jedva vidljivo, 0.15 = jače. -->
+         Prozirnost (opacity): 0.05 = jedva vidljivo, 0.3 = jače (bilo 0.3, sada 30% prozirnije = 0.21). -->
     <style>
       body::before {
         content: "";
         position: fixed;
         inset: 0;
         background: url("%PUBLIC_URL%/images/background-1.jpg") center / cover no-repeat;
-        opacity: 0.3;
+        opacity: 0.21;
         pointer-events: none; /* klikovi prolaze kroz sliku */
         z-index: -1;          /* iza sadržaja */
       }
