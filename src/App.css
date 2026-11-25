@@ -8,10 +8,10 @@
 }
 
 body { background: var(--bs-tertiary-bg); }
-/* Kartice na svim stranicama: 50% prozirna pozadina da se nazire slika stranice.
-   Prozirnost mijenjaš zadnjim brojem (0.5 = 50%). */
+/* Kartice na svim stranicama: 80% prozirna pozadina da se nazire slika stranice.
+   Prozirnost mijenjaš zadnjim brojem (0.2 = 20% vidljiva). */
 .card {
-  --bs-card-bg: rgba(var(--bs-body-bg-rgb), 0.5);
+  --bs-card-bg: rgba(var(--bs-body-bg-rgb), 0.2);
   --bs-card-border-width: 2px;
   --bs-card-border-color: #000;
 }
