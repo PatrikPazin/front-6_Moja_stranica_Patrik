@@ -23,7 +23,7 @@ const DATOTEKA = path.join(MAPA, "upiti.json");
 const MAX_TIJELO = 20 * 1024; // 20 KB
 const MAX_UPITA_PO_MINUTI = 5; // po IP adresi
 
-const IZGLED_ADRESE = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[A-Za-z]{2,}$/;
+const IZGLED_ADRESE = /^[^\s@\u0080-\uFFFF]+@[^\s@.\u0080-\uFFFF]+(\.[^\s@.\u0080-\uFFFF]+)*\.[A-Za-z]{2,}$/;
 
 function procitaj() {
   try {

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Facebook, Whatsapp, ChatDotsFill, Linkedin, Instagram, Twitter, Telephone, Phone, Envelope, GeoAlt } from 'react-bootstrap-icons';
 import { kontakt, linkovi } from '../data';
-import { mailtoAdresa } from '../upit';
 import Logo from './Logo';
 import NavStavka from './NavStavka';
 
@@ -46,9 +45,6 @@ function Footer() {
                 <div><GeoAlt aria-hidden="true" className="me-2" />{kontakt.adresa}</div>
               </address>
               {/* otvara novu poruku u korisnikovom e-mail programu, s već upisanom našom adresom; izbor web-poslužitelja i slanje preko servera: vidi upit.js */}
-              <div className="text-center mt-3">
-                <a href={mailtoAdresa} className="btn gumb-upit">Pošaljite upit</a>
-              </div>
             </div>
           </div>
         </div>

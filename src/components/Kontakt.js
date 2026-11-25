@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { posaljiUpit } from '../upit';
 
 // Valjana e-mail adresa: dio@domena.tld (mora imati @, domenu s točkom i oznaku od najmanje 2 slova)
-const IZGLED_ADRESE = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[A-Za-z]{2,}$/;
+const IZGLED_ADRESE = /^[^\s@\u0080-\uFFFF]+@[^\s@.\u0080-\uFFFF]+(\.[^\s@.\u0080-\uFFFF]+)*\.[A-Za-z]{2,}$/;
 
 // Česte pogreške u tipkanju poznatih davatelja e-pošte (npr. gmial.com) hvatamo posebno
 const POZNATI = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "icloud.com", "live.com", "proton.me", "protonmail.com"];
@@ -17,6 +17,7 @@ export function provjeriEmail(unos) {
   const adresa = unos.trim();
   if (!adresa) return "Upišite e-mail adresu.";
   if (!adresa.includes("@")) return "E-mail adresa mora sadržavati znak @.";
+  if (/[\u0080-\uFFFF]/.test(adresa)) return "E-mail adresa ne smije sadržavati slova s kvačicama (č, š, ž, đ…).";
   if (!IZGLED_ADRESE.test(adresa)) return "E-mail adresa nije valjana (npr. ime@gmail.com).";
   const domena = adresa.split("@")[1].toLowerCase();
   if (POGRESNI[domena]) return `Domena „${domena}” izgleda kao pogreška. Mislili ste ${POZNATI.includes(POGRESNI[domena]) ? POGRESNI[domena] : "drugu domenu"}?`;
