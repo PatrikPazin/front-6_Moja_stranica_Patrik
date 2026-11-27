@@ -62,7 +62,6 @@ function Footer() {
           ))}
         </ul>
         <Link to="/privatnost" className="text-black">Izjava o privatnosti</Link>
-        <p className="text-black mb-0 mt-2" style={{ fontSize: "0.875rem" }}>Pozadinska karta: arhivski materijal, slobodan za korištenje</p>
       </div>
     </footer>
   );

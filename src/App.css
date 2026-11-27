@@ -334,3 +334,9 @@ header { border-bottom: 5px solid #dc3545; }
 
 /* Blog: gumb "Pročitaj cijeli članak" širok koliko i sadržaj: 5px | naslov | 15px | strelica | 5px */
 .btn.gumb-clanak { padding-left: 5px; padding-right: 5px; column-gap: 15px; }
+
+/* Izvor pozadinske karte ispod navigacije: crno, na bijeloj traci da se čita preko karte */
+.izvor-pozadine {
+  margin: 0; padding: .375rem 8.3333%; text-align: center;
+  background: #fff; color: #000; font-size: .875rem;
+}
