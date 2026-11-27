@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useId } from 'react';
+import Slika from './Slika';
 import { usluge } from '../data';
 
 // Padajući izbornik "Odaberi posao" + detalji odabranog posla.
@@ -101,7 +102,7 @@ function ServiceCard({ usluga }) {
         {usluga.slika ? (
           <div className="col-12 col-sm-4 slika-kartice bg-white d-flex flex-column">
             <div className="position-relative flex-grow-1" style={{ minHeight: 160 }}>
-              <img
+              <Slika
                 src={usluga.slika} alt={usluga.slikaAlt || ""}
                 className="position-absolute top-0 start-0 w-100 h-100"
                 style={{ objectFit: "cover" }}

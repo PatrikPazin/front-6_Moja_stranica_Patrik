@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import Slika from './Slika';
 import { clanci } from '../data';
 
 // "2026-10-28" -> "28. listopada 2026."
@@ -26,7 +27,7 @@ function Izvor({ tekst, razmak = "mt-1" }) {
 function SlikaClanka({ clanak, klasa, minVisina }) {
   return clanak.slika ? (
     <div className={`${klasa} bg-white position-relative`} style={{ minHeight: minVisina }}>
-      <img
+      <Slika
         src={clanak.slika} alt={clanak.slikaAlt || ""}
         className="position-absolute top-0 start-0 w-100 h-100 p-2"
         style={{ objectFit: "contain" }}
