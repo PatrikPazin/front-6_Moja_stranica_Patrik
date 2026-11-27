@@ -108,7 +108,7 @@ export const koraci = [
   { naslov: "Teren i obrada podataka", opis: "Geodet dolazi na vašu česticu i obavlja izmjeru. Obrađujemo izmjerene podatke i radimo analizu s dostupnim arhivskim podacima katastra." },
   { naslov: "Elaborat/Podloga", opis: "Izrada elaborata ili posebnih podloga", to: "/#blog" },
   { naslov: "Ovjera i provedba", opis: "Elaborat ovjerava nadležni katastarski ured. Nakon podnošenja zahtjeva za provedbu, katastar mijenja podatke u katastarskom operatu prema podacima iz elaborata." },
-  { naslov: "Predaja", opis: "Gotovu dokumentaciju predajemo vama osobno", to: "/#blog" },
+  { naslov: "Gotov proizvod", opis: "Gotovu dokumentaciju predajemo vama osobno", to: "/#blog" },
 ];
 
 // Najnoviji članak ide prvi. Datum je GGGG-MM-DD.
