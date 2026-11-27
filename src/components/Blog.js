@@ -110,12 +110,12 @@ function ClanakSadrzaj({ clanak, onZatvori }) {
 }
 
 // Veliki ekrani: otvoreni članak u lijevoj polovici, popis članaka desno
-function ClanakPanel({ clanak, onZatvori }) {
+function ClanakPanel({ clanak, onZatvori, klasa = "clanak-panel" }) {
   const ref = useRef(null);
   // pri otvaranju (ili promjeni članka) fokus ide na članak, da ga čitač zaslona izgovori
   useEffect(() => { ref.current?.focus({ preventScroll: true }); }, []);
   return (
-    <aside className="clanak-panel" tabIndex={-1} ref={ref} aria-labelledby="clanak-naslov">
+    <aside className={klasa} tabIndex={-1} ref={ref} aria-labelledby="clanak-naslov">
       <ClanakSadrzaj clanak={clanak} onZatvori={onZatvori} />
     </aside>
   );
@@ -192,12 +192,33 @@ function Blog() {
   const veliki = useVeliki();
   const podijeljeno = veliki && otvoreniId !== null; // lijevo popis, desno članak
 
-  // dolazak iz izbornika "Vrste poslova": otvori članak s tim naslovom
+  // Dolazak iz izbornika "Vrste poslova": stranica se pomakne do kartice tog članka,
+  // a nakon sekunde se članak otvori na istom mjestu (ne u prikvačenom panelu).
+  const [trazeni, setTrazeni] = useState(null); // { i } članak do kojeg se treba pomaknuti
+  const [uMjestu, setUMjestu] = useState(null); // članak otvoren na mjestu svoje kartice
   const { state, key } = useLocation();
   useEffect(() => {
     const i = clanci.findIndex(c => c.naslov === state?.clanak);
-    if (i >= 0) setOtvoreniId(i);
+    if (i < 0) return;
+    setOtvoreniId(null);
+    setUMjestu(null);
+    setTrazeni({ i });
   }, [state, key]);
+
+  useEffect(() => {
+    if (!trazeni) return;
+    const mirno = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.getElementById(`blog-kartica-${trazeni.i}`)
+      ?.scrollIntoView({ behavior: mirno ? "auto" : "smooth", block: "start" });
+    const cekanje = setTimeout(() => setUMjestu(trazeni.i), 1000);
+    return () => clearTimeout(cekanje);
+  }, [trazeni]);
+
+  const zatvoriUMjestu = () => {
+    const id = uMjestu;
+    setUMjestu(null);
+    setTimeout(() => document.getElementById(`gumb-clanka-${id}`)?.focus(), 0);
+  };
 
   // zatvaranje u podijeljenom prikazu: fokus se vraća na gumb tog članka
   const zatvoriPanel = () => {
@@ -207,11 +228,17 @@ function Blog() {
   };
 
   const popis = clanci.map((c, i) => (
-    <Post
-      key={i} clanak={c} id={i}
-      aktivan={otvoreniId === i} podijeljeno={podijeljeno}
-      onOtvori={() => setOtvoreniId(i)}
-    />
+    <div key={i} id={`blog-kartica-${i}`} className="h-100" style={{ scrollMarginTop: 16 }}>
+      {uMjestu === i ? (
+        <ClanakPanel clanak={c} onZatvori={zatvoriUMjestu} klasa="clanak-panel clanak-u-mjestu" />
+      ) : (
+        <Post
+          clanak={c} id={i}
+          aktivan={otvoreniId === i} podijeljeno={podijeljeno}
+          onOtvori={() => { setTrazeni(null); setUMjestu(null); setOtvoreniId(i); }}
+        />
+      )}
+    </div>
   ));
 
   return (

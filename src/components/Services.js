@@ -59,8 +59,8 @@ function PoslovniIzbornik({ usluga }) {
             {usluga.opcije.map(([naziv]) => (
               <Link
                 key={naziv}
-                to="/#blog"
-                state={{ clanak: naziv }} // Blog.js po ovom naslovu otvori članak
+                to="/"
+                state={{ clanak: naziv }} // Blog.js se pomakne na članak s tim naslovom i otvori ga
                 className="list-group-item list-group-item-action"
                 onClick={zatvori}
               >
