@@ -70,7 +70,7 @@ function Post({ clanak, id, aktivan, podijeljeno, onOtvori }) {
 
           <button
             id={`gumb-clanka-${id}`}
-            className="btn btn-outline-success w-100 d-flex justify-content-between mt-auto"
+            className={"btn btn-outline-success gumb-clanak d-inline-flex mt-auto " + (clanak.bezSlike ? "align-self-center" : "align-self-start")}
             aria-haspopup={podijeljeno ? undefined : "dialog"}
             aria-current={aktivan ? "true" : undefined}
             onClick={onOtvori}
