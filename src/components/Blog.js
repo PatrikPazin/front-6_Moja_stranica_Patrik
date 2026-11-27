@@ -57,11 +57,14 @@ function Post({ clanak, id, aktivan, podijeljeno, onOtvori }) {
           </div>
         )}
         <div className={clanak.bezSlike ? "col-12 card-body d-flex flex-column text-center" : "col-12 col-sm-8 card-body"}>
-          {/* bez slike: naslov na vrhu u sredini, datum ispod njega */}
+          {/* bez slike: naslov na vrhu u sredini */}
           {clanak.bezSlike && naslov}
-          <time dateTime={clanak.datum} className="text-black" style={{ fontSize: FONT_DATUM }}>
-            {formatirajDatum(clanak.datum)}
-          </time>
+          {/* članci bez datuma (opisi poslova) ga ne prikazuju */}
+          {clanak.datum && (
+            <time dateTime={clanak.datum} className="text-black" style={{ fontSize: FONT_DATUM }}>
+              {formatirajDatum(clanak.datum)}
+            </time>
+          )}
           {!clanak.bezSlike && naslov}
           <p className="card-text text-secondary text-wrap text-break" style={{ whiteSpace: "pre-line", fontSize: FONT_TEKST }}>{clanak.sazetak}</p>
 
@@ -83,7 +86,7 @@ function Post({ clanak, id, aktivan, podijeljeno, onOtvori }) {
 
 // Sadržaj otvorenog članka (isti u prozoru preko stranice i u lijevoj polovici)
 function ClanakSadrzaj({ clanak, onZatvori }) {
-  const datum = (
+  const datum = clanak.datum && (
     <time dateTime={clanak.datum} className="text-black" style={{ fontSize: FONT_DATUM }}>{formatirajDatum(clanak.datum)}</time>
   );
   const naslov = (
@@ -99,7 +102,7 @@ function ClanakSadrzaj({ clanak, onZatvori }) {
 
       {/* otvoreni članak je bez slike (slika se vidi samo na kartici u popisu) */}
 
-      {/* bez slike: naslov na vrhu u sredini, datum ispod njega */}
+      {/* bez slike: naslov na vrhu u sredini */}
       {clanak.bezSlike ? <div className="text-center">{naslov}{datum}</div> : <>{datum}{naslov}</>}
       {clanak.tekst.map((o, i) => <p key={i} className="mb-3" style={{ fontSize: FONT_TEKST }}>{o}</p>)}
     </>

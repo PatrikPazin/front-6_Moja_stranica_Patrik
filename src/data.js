@@ -217,7 +217,6 @@ export const clanci = [
   // Za sliku ukloni bezSlike i upiši slika, slikaAlt i izvor (kao kod članaka gore).
   {
     naslov: "Elaborat evidentiranja stvarnog stanja/položaja",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Elaborat evidentiranja stvarnog stanja/položaja",
     tekst: [
@@ -226,7 +225,6 @@ export const clanci = [
   },
   {
     naslov: "Parcelacijski elaborat",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Parcelacijski elaborat",
     tekst: [
@@ -235,7 +233,6 @@ export const clanci = [
   },
   {
     naslov: "Iskolčenje međa",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Iskolčenje međa",
     tekst: [
@@ -244,7 +241,6 @@ export const clanci = [
   },
   {
     naslov: "Ucrtavanje nove/postojeće zgrade",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Ucrtavanje nove/postojeće zgrade",
     tekst: [
@@ -253,7 +249,6 @@ export const clanci = [
   },
   {
     naslov: "Upisivanje akta o legalnosti zgrade",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Upisivanje akta o legalnosti zgrade",
     tekst: [
@@ -262,7 +257,6 @@ export const clanci = [
   },
   {
     naslov: "Izmjena podataka o korištenju zgrade",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Izmjena podataka o korištenju zgrade",
     tekst: [
@@ -271,7 +265,6 @@ export const clanci = [
   },
   {
     naslov: "Etažni elaborat",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Etažni elaborat",
     tekst: [
@@ -280,7 +273,6 @@ export const clanci = [
   },
   {
     naslov: "Geodetska situacija stvarnog stanja",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Geodetska situacija stvarnog stanja",
     tekst: [
@@ -289,7 +281,6 @@ export const clanci = [
   },
   {
     naslov: "Geodetska situacija građevne čestice",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Geodetska situacija građevne čestice",
     tekst: [
@@ -298,7 +289,6 @@ export const clanci = [
   },
   {
     naslov: "Geodetski snimak za legalizaciju",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Geodetski snimak za legalizaciju",
     tekst: [
@@ -307,7 +297,6 @@ export const clanci = [
   },
   {
     naslov: "Zahvat u prostoru",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Zahvat u prostoru",
     tekst: [
@@ -316,7 +305,6 @@ export const clanci = [
   },
   {
     naslov: "Geodetski snimak izvedenog stanja",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Geodetski snimak izvedenog stanja",
     tekst: [
@@ -325,7 +313,6 @@ export const clanci = [
   },
   {
     naslov: "Posebne podloge za razne svrhe",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Posebne podloge za razne svrhe",
     tekst: [
@@ -334,7 +321,6 @@ export const clanci = [
   },
   {
     naslov: "Analiza i obrada podataka",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Analiza i obrada podataka",
     tekst: [
@@ -343,7 +329,6 @@ export const clanci = [
   },
   {
     naslov: "Snimanje terena dronom i izrada DOF-a",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Snimanje terena dronom i izrada DOF-a",
     tekst: [
@@ -352,7 +337,6 @@ export const clanci = [
   },
   {
     naslov: "Savjetovanje i konzultacije",
-    datum: "2026-11-27",
     bezSlike: true,
     sazetak: "Savjetovanje i konzultacije",
     tekst: [
