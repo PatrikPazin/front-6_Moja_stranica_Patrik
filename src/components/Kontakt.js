@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { posaljiUpit } from '../upit';
 
 // Valjana e-mail adresa: dio@domena.tld (mora imati @, domenu s točkom i oznaku od najmanje 2 slova)
@@ -119,6 +120,9 @@ function Kontakt() {
             {stanje === "ok" && <div className="alert alert-success" role="status">Vaš upit uspješno je zaprimljen</div>}
             {stanje === "greska" && <div className="alert alert-danger" role="alert">Niste pravilno ispunili podatke. Molim pokušajte ponovo</div>}
             {stanje === "greska-posluzitelj" && <div className="alert alert-danger" role="alert">{poruka}</div>}
+            <p className="text-black">
+              Podatke koristimo samo da odgovorimo na vaš upit. Više u <Link to="/privatnost" className="text-black">Izjavi o privatnosti</Link>.
+            </p>
             <button type="submit" className="btn gumb-crveni">Pošalji upit</button>
           </form>
         </div>
