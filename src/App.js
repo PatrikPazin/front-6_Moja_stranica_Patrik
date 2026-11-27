@@ -46,7 +46,7 @@ function App() {
       <PromjenaStranice glavniRef={glavniRef} />
       <Header />
       {/* opis i izvor pozadinske karte (public/index.html), na svim stranicama ispod navigacije */}
-      <p className="izvor-pozadine">Johannes Sambucus i Abraham Ortelius: <cite>Illyricum</cite> (1572.), javno dobro.</p>
+      <p className="izvor-pozadine">Pozadinska slika: Johannes Sambucus i Abraham Ortelius: <cite>Illyricum</cite> (1572.), javno dobro.</p>
       <main id="sadrzaj" ref={glavniRef} tabIndex={-1}>
         <Routes>
           <Route path="/" element={<Pocetna />} />
