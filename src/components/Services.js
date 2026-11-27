@@ -1,21 +1,18 @@
 import { useState, useRef, useEffect, useId } from 'react';
+import { Link } from 'react-router-dom';
 import Slika from './Slika';
 import { usluge } from '../data';
 
-// Padajući izbornik "Odaberi posao" + detalji odabranog posla.
+// Padajući izbornik "Vrste poslova": svaka stavka vodi na svoj članak u blogu.
 // Koristi se i u kartici ispod i u kartici u carouselu.
 function PoslovniIzbornik({ usluga }) {
   const [otvoreno, setOtvoreno] = useState(false);
-  const [odabrana, setOdabrana] = useState(null); // indeks odabrane opcije
 
   const korijen = useRef(null);
   const gumbRef = useRef(null);
   const panelId = useId();
 
-  const zatvori = () => {
-    setOtvoreno(false);
-    setOdabrana(null);
-  };
+  const zatvori = () => setOtvoreno(false);
 
   const prebaci = () => (otvoreno ? zatvori() : setOtvoreno(true));
 
@@ -41,9 +38,7 @@ function PoslovniIzbornik({ usluga }) {
     };
   }, [otvoreno]);
 
-  const detalj = odabrana !== null ? usluga.opcije[odabrana] : null;
-
-  // Izbornik i detalji su u "plutajućem" panelu (position: absolute),
+  // Izbornik je u "plutajućem" panelu (position: absolute),
   // pa se kartica ne produljuje, nego se panel prikaže iznad nižih kartica.
   return (
     <div className="position-relative" ref={korijen}>
@@ -61,35 +56,17 @@ function PoslovniIzbornik({ usluga }) {
       {otvoreno && (
         <div className="izbornik-panel" id={panelId}>
           <div className="list-group list-group-flush">
-            {usluga.opcije.map(([naziv], i) => (
-              <button
+            {usluga.opcije.map(([naziv]) => (
+              <Link
                 key={naziv}
-                className={"list-group-item list-group-item-action" + (odabrana === i ? " fw-bold" : "")}
-                aria-pressed={odabrana === i}
-                onClick={() => setOdabrana(i)}
+                to="/#blog"
+                state={{ clanak: naziv }} // Blog.js po ovom naslovu otvori članak
+                className="list-group-item list-group-item-action"
+                onClick={zatvori}
               >
                 {naziv}
-              </button>
+              </Link>
             ))}
-          </div>
-
-          {/* aria-live: čitač zaslona izgovori detalje kad se odabere posao */}
-          <div aria-live="polite">
-            {detalj && (
-              <div className="alert alert-success m-2">
-                <h3 className="h6">{detalj[0]}</h3>
-                {/* opis i potrebni dokumenti su neobavezni (data.js: [naziv, opis, "dok1; dok2"]) */}
-                {detalj[1] && <p className="mb-2">{detalj[1]}</p>}
-                {detalj[2] && (
-                  <>
-                    <h4 className="h6">Što je potrebno</h4>
-                    <ul className="mb-0">
-                      {detalj[2].split("; ").map(t => <li key={t}>{t}</li>)}
-                    </ul>
-                  </>
-                )}
-              </div>
-            )}
           </div>
         </div>
       )}

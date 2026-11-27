@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Slika from './Slika';
 import { clanci } from '../data';
 
@@ -174,6 +175,13 @@ function Blog() {
   const [otvoreniId, setOtvoreniId] = useState(null);
   const veliki = useVeliki();
   const podijeljeno = veliki && otvoreniId !== null; // lijevo popis, desno članak
+
+  // dolazak iz izbornika "Vrste poslova": otvori članak s tim naslovom
+  const { state, key } = useLocation();
+  useEffect(() => {
+    const i = clanci.findIndex(c => c.naslov === state?.clanak);
+    if (i >= 0) setOtvoreniId(i);
+  }, [state, key]);
 
   // zatvaranje u podijeljenom prikazu: fokus se vraća na gumb tog članka
   const zatvoriPanel = () => {

@@ -210,4 +210,136 @@ export const clanci = [
       "Kada se sakupe potpisi svih prisutnih i kada nitko više nema primjedbi na međe, terenski uviđaj se može smatrati gotovim i elaborat može nastaviti svojim tokom.",
     ],
   },
+
+  // ---- Članci uz vrste poslova (padajući izbornici na karticama usluga) ----
+  // Naslov mora biti isti kao stavka u izborniku (usluge[].opcije), jer se po njemu članak otvara.
+  // Privremeni tekst = naslov. Kad dodaš sliku, upiši i slika, slikaAlt i izvor (kao kod članaka gore).
+  {
+    naslov: "Elaborat evidentiranja stvarnog stanja/položaja",
+    datum: "2026-11-27",
+    sazetak: "Elaborat evidentiranja stvarnog stanja/položaja",
+    tekst: [
+      "Elaborat evidentiranja stvarnog stanja/položaja",
+    ],
+  },
+  {
+    naslov: "Parcelacijski elaborat",
+    datum: "2026-11-27",
+    sazetak: "Parcelacijski elaborat",
+    tekst: [
+      "Parcelacijski elaborat",
+    ],
+  },
+  {
+    naslov: "Iskolčenje međa",
+    datum: "2026-11-27",
+    sazetak: "Iskolčenje međa",
+    tekst: [
+      "Iskolčenje međa",
+    ],
+  },
+  {
+    naslov: "Ucrtavanje nove/postojeće zgrade",
+    datum: "2026-11-27",
+    sazetak: "Ucrtavanje nove/postojeće zgrade",
+    tekst: [
+      "Ucrtavanje nove/postojeće zgrade",
+    ],
+  },
+  {
+    naslov: "Upisivanje akta o legalnosti zgrade",
+    datum: "2026-11-27",
+    sazetak: "Upisivanje akta o legalnosti zgrade",
+    tekst: [
+      "Upisivanje akta o legalnosti zgrade",
+    ],
+  },
+  {
+    naslov: "Izmjena podataka o korištenju zgrade",
+    datum: "2026-11-27",
+    sazetak: "Izmjena podataka o korištenju zgrade",
+    tekst: [
+      "Izmjena podataka o korištenju zgrade",
+    ],
+  },
+  {
+    naslov: "Etažni elaborat",
+    datum: "2026-11-27",
+    sazetak: "Etažni elaborat",
+    tekst: [
+      "Etažni elaborat",
+    ],
+  },
+  {
+    naslov: "Geodetska situacija stvarnog stanja",
+    datum: "2026-11-27",
+    sazetak: "Geodetska situacija stvarnog stanja",
+    tekst: [
+      "Geodetska situacija stvarnog stanja",
+    ],
+  },
+  {
+    naslov: "Geodetska situacija građevne čestice",
+    datum: "2026-11-27",
+    sazetak: "Geodetska situacija građevne čestice",
+    tekst: [
+      "Geodetska situacija građevne čestice",
+    ],
+  },
+  {
+    naslov: "Geodetski snimak za legalizaciju",
+    datum: "2026-11-27",
+    sazetak: "Geodetski snimak za legalizaciju",
+    tekst: [
+      "Geodetski snimak za legalizaciju",
+    ],
+  },
+  {
+    naslov: "Zahvat u prostoru",
+    datum: "2026-11-27",
+    sazetak: "Zahvat u prostoru",
+    tekst: [
+      "Zahvat u prostoru",
+    ],
+  },
+  {
+    naslov: "Geodetski snimak izvedenog stanja",
+    datum: "2026-11-27",
+    sazetak: "Geodetski snimak izvedenog stanja",
+    tekst: [
+      "Geodetski snimak izvedenog stanja",
+    ],
+  },
+  {
+    naslov: "Posebne podloge za razne svrhe",
+    datum: "2026-11-27",
+    sazetak: "Posebne podloge za razne svrhe",
+    tekst: [
+      "Posebne podloge za razne svrhe",
+    ],
+  },
+  {
+    naslov: "Analiza i obrada podataka",
+    datum: "2026-11-27",
+    sazetak: "Analiza i obrada podataka",
+    tekst: [
+      "Analiza i obrada podataka",
+    ],
+  },
+  {
+    naslov: "Snimanje terena dronom i izrada DOF-a",
+    datum: "2026-11-27",
+    sazetak: "Snimanje terena dronom i izrada DOF-a",
+    tekst: [
+      "Snimanje terena dronom i izrada DOF-a",
+    ],
+  },
+  {
+    naslov: "Savjetovanje i konzultacije",
+    datum: "2026-11-27",
+    sazetak: "Savjetovanje i konzultacije",
+    tekst: [
+      "Savjetovanje i konzultacije",
+    ],
+  },
 ];
