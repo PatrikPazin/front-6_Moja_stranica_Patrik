@@ -15,7 +15,7 @@ function Privatnost() {
 
       <h2 className="h4 mt-4">1. Tko obrađuje vaše podatke</h2>
       <p>
-        Voditelj obrade je GeoPiket d.o.o. za geodetske usluge, {kontakt.adresa}, OIB: (primjer, školski rad).
+        Voditelj obrade je GeoPiket d.o.o. za geodetske usluge, {kontakt.adresa}, OIB: {kontakt.oib}.
         Za sva pitanja o zaštiti podataka možete nam se javiti na <a href={`mailto:${kontakt.email}`}>{kontakt.email}</a>.
       </p>
       <p>Ova stranica je školski projekt za završni ispit. Tvrtka i kontakt podaci su primjeri, a usluge se ne prodaju.</p>

@@ -35,6 +35,7 @@ export const kontakt = {
   mob: "+385 91 234 5678",
   email: "info@geodetski-ured.hr",
   adresa: "Ulica primjera 1, 52000 Pazin",
+  oib: "00000000000 (primjer)", // izmišljeni broj za školski projekt
 };
 
 // Kartice u carouselu na stranici Usluge. "to" je adresa stranice na koju kartica vodi

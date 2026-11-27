@@ -17,6 +17,8 @@ function ONama() {
         {kontakt.adresa}<br />
         Tel: <a href={`tel:${kontakt.tel.replace(/\s/g, '')}`}>{kontakt.tel}</a><br />
         E-pošta: <a href={`mailto:${kontakt.email}`}>{kontakt.email}</a>
+        <br />
+        OIB: {kontakt.oib}
       </address>
     </section>
   );

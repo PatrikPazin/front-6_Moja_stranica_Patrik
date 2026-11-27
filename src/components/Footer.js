@@ -43,6 +43,7 @@ function Footer() {
                 <div><Phone aria-hidden="true" className="me-2" />mob: {kontakt.mob}</div>
                 <div><Envelope aria-hidden="true" className="me-2" /><a href={`mailto:${kontakt.email}`} className="text-black">{kontakt.email}</a></div>
                 <div><GeoAlt aria-hidden="true" className="me-2" />{kontakt.adresa}</div>
+                <div>OIB: {kontakt.oib}</div>
               </address>
               {/* otvara novu poruku u korisnikovom e-mail programu, s već upisanom našom adresom; izbor web-poslužitelja i slanje preko servera: vidi upit.js */}
             </div>

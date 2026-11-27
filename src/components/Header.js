@@ -55,6 +55,7 @@ function Header() {
           <span><Telephone aria-hidden="true" className="me-2" />tel: {kontakt.tel}</span>
           <span><Phone aria-hidden="true" className="me-2" />mob: {kontakt.mob}</span>
           <span><Envelope aria-hidden="true" className="me-2" /><a href={`mailto:${kontakt.email}`} className="text-black">{kontakt.email}</a></span>
+          <span>OIB: {kontakt.oib}</span>
         </address>
         <div className="container pt-3">
           {/* logo + izbornik: red -> izbornik ispod loga -> hamburger, ovisno o raspoloživoj širini */}
