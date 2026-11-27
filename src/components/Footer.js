@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Whatsapp, ChatDotsFill, Linkedin, Instagram, Twitter, Telephone, Phone, Envelope, GeoAlt } from 'react-bootstrap-icons';
+import { Facebook, Whatsapp, ChatDotsFill, Linkedin, Instagram, Telephone, Phone, Envelope, GeoAlt } from 'react-bootstrap-icons';
 import { kontakt, linkovi } from '../data';
 import Logo from './Logo';
 import NavStavka from './NavStavka';
@@ -11,7 +11,6 @@ const mreze = [
   { naziv: "Viber", Ikona: ChatDotsFill, boja: "#7360F2" },
   { naziv: "LinkedIn", Ikona: Linkedin, boja: "#0A66C2" },
   { naziv: "Instagram", Ikona: Instagram, boja: "#E4405F" },
-  { naziv: "Twitter", Ikona: Twitter, boja: "#1DA1F2" },
 ];
 
 function Footer() {
