@@ -25,7 +25,7 @@ export const oNama = {
   vrijednosti: [
     { naslov: "Stručnost", opis: "Ovlašteni inženjeri geodezije i suradnici sa višegodišnjim iskustvom." },
     { naslov: "Jasna komunikacija", opis: "Unaprijed objašnjavamo korake, rokove i troškove te stojimo na raspolaganju za dodatna dogovaranja i promjene." },
-    { naslov: "Točnost i rokovi", opis: "Mjerenja i geodetski elaborati izrađuju se pažljivo,ogovorno i u dogovorenom roku." },
+    { naslov: "Točnost i rokovi", opis: "Mjerenja i geodetski elaborati izrađuju se pažljivo, odgovorno i u dogovorenom roku." },
   ],
 };
 
