@@ -119,11 +119,11 @@ body { background: var(--bs-tertiary-bg); }
   background: #fff; border: 1px solid var(--bs-border-color);
   border-radius: .375rem; box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 }
-/* Naslovi u izborniku: bez pozadine, svijetloplava tek na hover */
+/* Naslovi u izborniku: bez pozadine, blagocrvena tek na hover */
 .izbornik-panel .list-group-item { background: transparent; }
 .izbornik-panel .list-group-item-action:hover,
 .izbornik-panel .list-group-item-action:focus,
-.izbornik-panel .list-group-item-action:active { background: lightblue; color: inherit; }
+.izbornik-panel .list-group-item-action:active { background: #f4b6b6; color: #000; }
 
 /* Klikabilna kartica u carouselu: tekst umjesto slike, otprilike pola prijašnje visine */
 .carousel-link {
