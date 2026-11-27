@@ -2,50 +2,53 @@ import { Link } from 'react-router-dom';
 import { kontakt } from '../data';
 
 // Izjava o privatnosti (obavijest o obradi osobnih podataka prema GDPR-u, čl. 13.).
-// Mjesta označena <mark> (oznaka "dopuniti") treba ispuniti stvarnim podacima prije objave prave stranice.
-// Tekst je predložak, a ne pravni savjet: za pravu stranicu neka ga pregleda stručna osoba.
-const Dopuniti = ({ children }) => <mark>[dopuniti: {children}]</mark>;
+// Ovo je školski projekt (završni ispit). Za pravu stranicu tekst neka pregleda stručna osoba,
+// a umjesto napomena o projektu treba upisati stvarne podatke (OIB, pružatelj smještaja stranice).
+// Registracija je skrivena iz izbornika, pa je dio o korisničkim računima u komentarima.
+// Ako se prijava vrati (data.js), vrati i te dijelove.
 
 function Privatnost() {
   return (
     <section className="container py-5 privatnost">
       <h1 className="h2 mb-2">Izjava o privatnosti</h1>
-      <p className="text-black">Zadnja izmjena: 23. studenoga 2026.</p>
+      <p className="text-black">Zadnja izmjena: 27. studenoga 2026.</p>
 
       <h2 className="h4 mt-4">1. Tko obrađuje vaše podatke</h2>
       <p>
-        Voditelj obrade je GeoPiket d.o.o. za geodetske usluge, {kontakt.adresa}, OIB: <Dopuniti>OIB tvrtke</Dopuniti>.
+        Voditelj obrade je GeoPiket d.o.o. za geodetske usluge, {kontakt.adresa}, OIB: (primjer, školski rad).
         Za sva pitanja o zaštiti podataka možete nam se javiti na <a href={`mailto:${kontakt.email}`}>{kontakt.email}</a>.
       </p>
+      <p>Ova stranica je školski projekt za završni ispit. Tvrtka i kontakt podaci su primjeri, a usluge se ne prodaju.</p>
 
       <h2 className="h4 mt-4">2. Koje podatke prikupljamo i zašto</h2>
       <ul>
         <li>
-          <strong>Registracija korisničkog računa:</strong> ime, prezime, adresa (ulica, poštanski broj i grad), e-mail adresa i lozinka.
-          Koristimo ih za izradu računa i prijavu na stranicu. Pravna osnova: izvršenje ugovora, odnosno radnje koje tražite prije sklapanja ugovora
-          (čl. 6. st. 1. t. b GDPR-a).
+          <strong>Obrazac „Kontaktirajte nas”:</strong> ime i prezime, e-mail adresa, kontakt telefon (neobavezno), opis upita te datum i
+          vrijeme primitka. Koristimo ih samo da odgovorimo na upit i pripremimo ponudu. Pravna osnova: radnje na vaš zahtjev prije
+          sklapanja ugovora (čl. 6. st. 1. t. b GDPR-a).
         </li>
         <li>
-          <strong>Upit e-poštom:</strong> kad nam pošaljete upit, primamo vašu e-mail adresu i sadržaj poruke.
-          Koristimo ih samo da vam odgovorimo i pripremimo ponudu. Pravna osnova: radnje na vaš zahtjev prije sklapanja ugovora (čl. 6. st. 1. t. b).
+          <strong>Upit e-poštom:</strong> kad nam sami pošaljete poruku, primamo vašu e-mail adresu i sadržaj poruke, u istu svrhu i po istoj osnovi.
+        </li>
+        <li>
+          <strong>Zaštita obrasca:</strong> poslužitelj nakratko, samo dok radi, pamti IP adresu pošiljatelja kako bi ograničio broj upita.
+          Ne zapisuje je uz upit. Pravna osnova: legitimni interes za zaštitu od zlouporabe (čl. 6. st. 1. t. f).
         </li>
       </ul>
-      <p>
-        Lozinku nikad ne čuvamo u izvornom obliku, nego samo kao šifrirani sažetak (hash) iz kojeg se lozinka ne može pročitati.
-        Podatke ne prodajemo i ne koristimo za automatizirano odlučivanje ni za oglašavanje.
-      </p>
+      {/* Za povratak prijave dodati u popis:
+          Registracija korisničkog računa: ime, prezime, adresa, e-mail i lozinka (čuva se samo kao hash). */}
+      <p>Podatke ne prodajemo i ne koristimo za automatizirano odlučivanje ni za oglašavanje.</p>
 
-      <h2 className="h4 mt-4">3. Koliko dugo čuvamo podatke</h2>
-      <ul>
-        <li>Podaci korisničkog računa: do brisanja računa na vaš zahtjev.</li>
-        <li>Upiti i odgovori: <Dopuniti>rok, npr. 12 mjeseci od posljednje poruke</Dopuniti>, osim ako zakon traži dulje čuvanje (npr. dokumentacija o izvršenim poslovima).</li>
-      </ul>
+      <h2 className="h4 mt-4">3. Kamo upit ide i koliko ga čuvamo</h2>
+      <p>
+        Upit se sprema u datoteku na našem poslužitelju i istodobno šalje na našu e-mail adresu. Upite i odgovore čuvamo najdulje
+        12 mjeseci od posljednje poruke, a zatim ih brišemo, osim ako zakon traži dulje čuvanje (npr. dokumentacija o izvršenim poslovima).
+      </p>
 
       <h2 className="h4 mt-4">4. Kolačići i slične tehnologije</h2>
       <p>
         Naša stranica <strong>ne koristi kolačiće</strong> za praćenje, analitiku ni oglašavanje, pa vam ne prikazujemo baner za privolu.
-        Preglednik pohranjuje samo podatke nužne za rad stranice: oznaku da ste prijavljeni (traje do zatvaranja kartice preglednika)
-        i podatke potrebne za prijavu. Fontovi i slike učitavaju se s našeg poslužitelja, a ne od trećih strana.
+        Pri uobičajenom korištenju ne spremamo podatke u vaš preglednik. Fontovi i slike učitavaju se s našeg poslužitelja, a ne od trećih strana.
       </p>
       <p>
         Ako ubuduće uvedemo analitiku ili drugu uslugu koja koristi kolačiće ili prikuplja podatke o posjetima, najprije ćemo ažurirati ovu izjavu,
@@ -60,10 +63,15 @@ function Privatnost() {
       </p>
 
       <h2 className="h4 mt-4">6. Tko još vidi vaše podatke</h2>
-      <p>
-        Podatke ne dajemo trećim stranama, osim pružateljima usluga koji nam pomažu u radu (poslužitelj za smještaj stranice i usluga e-pošte:
-        <Dopuniti>nazivi pružatelja i država u kojoj posluju</Dopuniti>) te kad to zakon traži.
-      </p>
+      <p>Podatke ne dajemo trećim stranama, osim kad to zakon traži i osim pružateljima usluga koji nam pomažu u radu:</p>
+      <ul>
+        <li>
+          <strong>Resend</strong> (<a href="https://resend.com" target="_blank" rel="noopener noreferrer">resend.com</a>): usluga preko koje
+          nam upit iz obrasca stiže na e-mail. Tvrtka je iz SAD-a, pa se podaci iz upita obrađuju i izvan Europske unije.
+        </li>
+        <li><strong>Usluga e-pošte</strong> u kojoj primamo poruke.</li>
+        <li><strong>Smještaj stranice:</strong> pružatelj još nije odabran, projekt se za sada pokreće lokalno.</li>
+      </ul>
 
       <h2 className="h4 mt-4">7. Vaša prava</h2>
       <p>Imate pravo na:</p>
@@ -83,8 +91,8 @@ function Privatnost() {
 
       <h2 className="h4 mt-4">8. Sigurnost podataka</h2>
       <p>
-        Poduzimamo razumne tehničke i organizacijske mjere zaštite: lozinke su pohranjene kao sažetak, pristup podacima imaju samo ovlaštene osobe,
-        a stranica se poslužuje preko zaštićene veze (HTTPS). <Dopuniti>potvrditi nakon objave prave stranice</Dopuniti>
+        Poduzimamo razumne tehničke i organizacijske mjere zaštite: provjeravamo unesene podatke, ograničavamo broj upita, a pristup
+        podacima imaju samo ovlaštene osobe. Objavljena stranica treba se posluživati preko zaštićene veze (HTTPS).
       </p>
 
       <h2 className="h4 mt-4">9. Izmjene ove izjave</h2>
