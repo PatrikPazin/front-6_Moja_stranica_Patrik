@@ -4,13 +4,13 @@ import { kontakt, linkovi } from '../data';
 import Logo from './Logo';
 import NavStavka from './NavStavka';
 
-// Društvene mreže: za sada sve vode na stranicu "u izradi"
+// Društvene mreže: vode na naslovne stranice aplikacija (tvrtka nema svoje profile), u novoj kartici
 const mreze = [
-  { naziv: "Facebook", Ikona: Facebook, boja: "#1877F2" },
-  { naziv: "WhatsApp", Ikona: Whatsapp, boja: "#25D366" },
-  { naziv: "Viber", Ikona: ChatDotsFill, boja: "#7360F2" },
-  { naziv: "LinkedIn", Ikona: Linkedin, boja: "#0A66C2" },
-  { naziv: "Instagram", Ikona: Instagram, boja: "#E4405F" },
+  { naziv: "Facebook", url: "https://www.facebook.com", Ikona: Facebook, boja: "#1877F2" },
+  { naziv: "WhatsApp", url: "https://www.whatsapp.com", Ikona: Whatsapp, boja: "#25D366" },
+  { naziv: "Viber", url: "https://www.viber.com", Ikona: ChatDotsFill, boja: "#7360F2" },
+  { naziv: "LinkedIn", url: "https://www.linkedin.com", Ikona: Linkedin, boja: "#0A66C2" },
+  { naziv: "Instagram", url: "https://www.instagram.com", Ikona: Instagram, boja: "#E4405F" },
 ];
 
 function Footer() {
@@ -53,11 +53,11 @@ function Footer() {
       {/* donja polovica: ikone društvenih mreža u sredini */}
       <div className="podnozje-gore podnozje-dno d-flex flex-column justify-content-center align-items-center gap-2 py-3">
         <ul className="list-unstyled d-flex flex-wrap justify-content-center gap-3 m-0 p-0" aria-label="Društvene mreže">
-          {mreze.map(({ naziv, Ikona, boja }) => (
+          {mreze.map(({ naziv, url, Ikona, boja }) => (
             <li key={naziv}>
-              <Link to="/u-izradi" className="btn gumb-mreza" style={{ "--boja": boja }} aria-label={naziv} title={naziv}>
+              <a href={url} target="_blank" rel="noopener noreferrer" className="btn gumb-mreza" style={{ "--boja": boja }} aria-label={`${naziv} (otvara se u novoj kartici)`} title={naziv}>
                 <Ikona aria-hidden="true" />
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
