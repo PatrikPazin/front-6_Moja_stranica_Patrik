@@ -213,10 +213,12 @@ export const clanci = [
 
   // ---- Članci uz vrste poslova (padajući izbornici na karticama usluga) ----
   // Naslov mora biti isti kao stavka u izborniku (usluge[].opcije), jer se po njemu članak otvara.
-  // Privremeni tekst = naslov. Kad dodaš sliku, upiši i slika, slikaAlt i izvor (kao kod članaka gore).
+  // Privremeni tekst = naslov. bezSlike: kartica i članak su bez slike, naslov je na vrhu u sredini.
+  // Za sliku ukloni bezSlike i upiši slika, slikaAlt i izvor (kao kod članaka gore).
   {
     naslov: "Elaborat evidentiranja stvarnog stanja/položaja",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Elaborat evidentiranja stvarnog stanja/položaja",
     tekst: [
       "Elaborat evidentiranja stvarnog stanja/položaja",
@@ -225,6 +227,7 @@ export const clanci = [
   {
     naslov: "Parcelacijski elaborat",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Parcelacijski elaborat",
     tekst: [
       "Parcelacijski elaborat",
@@ -233,6 +236,7 @@ export const clanci = [
   {
     naslov: "Iskolčenje međa",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Iskolčenje međa",
     tekst: [
       "Iskolčenje međa",
@@ -241,6 +245,7 @@ export const clanci = [
   {
     naslov: "Ucrtavanje nove/postojeće zgrade",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Ucrtavanje nove/postojeće zgrade",
     tekst: [
       "Ucrtavanje nove/postojeće zgrade",
@@ -249,6 +254,7 @@ export const clanci = [
   {
     naslov: "Upisivanje akta o legalnosti zgrade",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Upisivanje akta o legalnosti zgrade",
     tekst: [
       "Upisivanje akta o legalnosti zgrade",
@@ -257,6 +263,7 @@ export const clanci = [
   {
     naslov: "Izmjena podataka o korištenju zgrade",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Izmjena podataka o korištenju zgrade",
     tekst: [
       "Izmjena podataka o korištenju zgrade",
@@ -265,6 +272,7 @@ export const clanci = [
   {
     naslov: "Etažni elaborat",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Etažni elaborat",
     tekst: [
       "Etažni elaborat",
@@ -273,6 +281,7 @@ export const clanci = [
   {
     naslov: "Geodetska situacija stvarnog stanja",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Geodetska situacija stvarnog stanja",
     tekst: [
       "Geodetska situacija stvarnog stanja",
@@ -281,6 +290,7 @@ export const clanci = [
   {
     naslov: "Geodetska situacija građevne čestice",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Geodetska situacija građevne čestice",
     tekst: [
       "Geodetska situacija građevne čestice",
@@ -289,6 +299,7 @@ export const clanci = [
   {
     naslov: "Geodetski snimak za legalizaciju",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Geodetski snimak za legalizaciju",
     tekst: [
       "Geodetski snimak za legalizaciju",
@@ -297,6 +308,7 @@ export const clanci = [
   {
     naslov: "Zahvat u prostoru",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Zahvat u prostoru",
     tekst: [
       "Zahvat u prostoru",
@@ -305,6 +317,7 @@ export const clanci = [
   {
     naslov: "Geodetski snimak izvedenog stanja",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Geodetski snimak izvedenog stanja",
     tekst: [
       "Geodetski snimak izvedenog stanja",
@@ -313,6 +326,7 @@ export const clanci = [
   {
     naslov: "Posebne podloge za razne svrhe",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Posebne podloge za razne svrhe",
     tekst: [
       "Posebne podloge za razne svrhe",
@@ -321,6 +335,7 @@ export const clanci = [
   {
     naslov: "Analiza i obrada podataka",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Analiza i obrada podataka",
     tekst: [
       "Analiza i obrada podataka",
@@ -329,6 +344,7 @@ export const clanci = [
   {
     naslov: "Snimanje terena dronom i izrada DOF-a",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Snimanje terena dronom i izrada DOF-a",
     tekst: [
       "Snimanje terena dronom i izrada DOF-a",
@@ -337,6 +353,7 @@ export const clanci = [
   {
     naslov: "Savjetovanje i konzultacije",
     datum: "2026-11-27",
+    bezSlike: true,
     sazetak: "Savjetovanje i konzultacije",
     tekst: [
       "Savjetovanje i konzultacije",

@@ -43,24 +43,31 @@ function SlikaClanka({ clanak, klasa, minVisina }) {
 
 // Sažeti prikaz: slika, datum, naslov, sažetak i gumb koji otvara cijeli članak
 function Post({ clanak, id, aktivan, podijeljeno, onOtvori }) {
+  const naslov = (
+    <h2 className="card-title" style={{ fontSize: FONT_NASLOV_KARTICE, marginBottom: RAZMAK_NASLOV }}>{clanak.naslov}</h2>
+  );
   return (
     <article className="card h-100 overflow-hidden">
       <div className="row g-0 h-100">
-        {/* slika s izvorom ispod nje (u otvorenom članku slike nema) */}
-        <div className="col-12 col-sm-4 d-flex flex-column bg-white">
-          <SlikaClanka clanak={clanak} klasa="flex-grow-1" minVisina={240} />
-          <Izvor tekst={clanak.izvor} razmak="mt-0 px-2 pb-1" />
-        </div>
-        <div className="col-12 col-sm-8 card-body">
+        {/* slika s izvorom ispod nje (u otvorenom članku slike nema); članci s bezSlike nemaju ni taj stupac */}
+        {!clanak.bezSlike && (
+          <div className="col-12 col-sm-4 d-flex flex-column bg-white">
+            <SlikaClanka clanak={clanak} klasa="flex-grow-1" minVisina={240} />
+            <Izvor tekst={clanak.izvor} razmak="mt-0 px-2 pb-1" />
+          </div>
+        )}
+        <div className={clanak.bezSlike ? "col-12 card-body d-flex flex-column text-center" : "col-12 col-sm-8 card-body"}>
+          {/* bez slike: naslov na vrhu u sredini, datum ispod njega */}
+          {clanak.bezSlike && naslov}
           <time dateTime={clanak.datum} className="text-black" style={{ fontSize: FONT_DATUM }}>
             {formatirajDatum(clanak.datum)}
           </time>
-          <h2 className="card-title" style={{ fontSize: FONT_NASLOV_KARTICE, marginBottom: RAZMAK_NASLOV }}>{clanak.naslov}</h2>
+          {!clanak.bezSlike && naslov}
           <p className="card-text text-secondary text-wrap text-break" style={{ whiteSpace: "pre-line", fontSize: FONT_TEKST }}>{clanak.sazetak}</p>
 
           <button
             id={`gumb-clanka-${id}`}
-            className="btn btn-outline-success w-100 d-flex justify-content-between"
+            className="btn btn-outline-success w-100 d-flex justify-content-between mt-auto"
             aria-haspopup={podijeljeno ? undefined : "dialog"}
             aria-current={aktivan ? "true" : undefined}
             onClick={onOtvori}
@@ -76,6 +83,12 @@ function Post({ clanak, id, aktivan, podijeljeno, onOtvori }) {
 
 // Sadržaj otvorenog članka (isti u prozoru preko stranice i u lijevoj polovici)
 function ClanakSadrzaj({ clanak, onZatvori }) {
+  const datum = (
+    <time dateTime={clanak.datum} className="text-black" style={{ fontSize: FONT_DATUM }}>{formatirajDatum(clanak.datum)}</time>
+  );
+  const naslov = (
+    <h2 id="clanak-naslov" className="card-title" style={{ fontSize: FONT_NASLOV_CLANKA, marginBottom: RAZMAK_NASLOV }}>{clanak.naslov}</h2>
+  );
   return (
     <>
       <div className="d-flex justify-content-end">
@@ -86,8 +99,8 @@ function ClanakSadrzaj({ clanak, onZatvori }) {
 
       {/* otvoreni članak je bez slike (slika se vidi samo na kartici u popisu) */}
 
-      <time dateTime={clanak.datum} className="text-black" style={{ fontSize: FONT_DATUM }}>{formatirajDatum(clanak.datum)}</time>
-      <h2 id="clanak-naslov" className="card-title" style={{ fontSize: FONT_NASLOV_CLANKA, marginBottom: RAZMAK_NASLOV }}>{clanak.naslov}</h2>
+      {/* bez slike: naslov na vrhu u sredini, datum ispod njega */}
+      {clanak.bezSlike ? <div className="text-center">{naslov}{datum}</div> : <>{datum}{naslov}</>}
       {clanak.tekst.map((o, i) => <p key={i} className="mb-3" style={{ fontSize: FONT_TEKST }}>{o}</p>)}
     </>
   );
