@@ -29,7 +29,7 @@ function PromjenaStranice({ glavniRef }) {
   const prvi = useRef(true);
   useEffect(() => {
     if (!hash) window.scrollTo(0, 0); // s #sekcijom stranicu pomiče Pocetna.js
-    document.title = `${naslovi[pathname] || "Informacije"} – GeoPatrik d.o.o.`;
+    document.title = `${naslovi[pathname] || "Informacije"} – GeoPiket d.o.o.`;
     if (prvi.current) { prvi.current = false; return; } // ne otimaj fokus pri prvom učitavanju
     glavniRef.current?.focus({ preventScroll: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps

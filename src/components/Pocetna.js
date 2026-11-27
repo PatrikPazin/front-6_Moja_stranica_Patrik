@@ -78,7 +78,7 @@ function Pocetna() {
 
   return (
     <>
-      <h1 className="visually-hidden">GeoPatrik d.o.o. za geodetske usluge</h1>
+      <h1 className="visually-hidden">GeoPiket d.o.o. za geodetske usluge</h1>
       {GRUPE.map((grupa, i) => (
         <div key={grupa[0].id}>
           {i > 0 && <SekcijskaTraka />}
