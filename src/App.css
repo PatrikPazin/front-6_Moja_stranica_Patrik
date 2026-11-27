@@ -120,7 +120,7 @@ body { background: var(--bs-tertiary-bg); }
   border-radius: .375rem; box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 }
 /* Naslovi u izborniku: bez pozadine, blagocrvena tek na hover */
-.izbornik-panel .list-group-item { background: transparent; }
+.izbornik-panel .list-group-item { background: transparent; color: #000; }
 .izbornik-panel .list-group-item-action:hover,
 .izbornik-panel .list-group-item-action:focus,
 .izbornik-panel .list-group-item-action:active { background: #f4b6b6; color: #000; }
