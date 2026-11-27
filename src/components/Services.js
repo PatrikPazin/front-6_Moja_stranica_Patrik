@@ -78,11 +78,16 @@ function PoslovniIzbornik({ usluga }) {
             {detalj && (
               <div className="alert alert-success m-2">
                 <h3 className="h6">{detalj[0]}</h3>
-                <p className="mb-2">{detalj[1]}</p>
-                <h4 className="h6">Što je potrebno</h4>
-                <ul className="mb-0">
-                  {detalj[2].split("; ").map(t => <li key={t}>{t}</li>)}
-                </ul>
+                {/* opis i potrebni dokumenti su neobavezni (data.js: [naziv, opis, "dok1; dok2"]) */}
+                {detalj[1] && <p className="mb-2">{detalj[1]}</p>}
+                {detalj[2] && (
+                  <>
+                    <h4 className="h6">Što je potrebno</h4>
+                    <ul className="mb-0">
+                      {detalj[2].split("; ").map(t => <li key={t}>{t}</li>)}
+                    </ul>
+                  </>
+                )}
               </div>
             )}
           </div>
