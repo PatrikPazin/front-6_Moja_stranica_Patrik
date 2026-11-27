@@ -56,7 +56,7 @@ function Post({ clanak, id, aktivan, podijeljeno, onOtvori }) {
             <Izvor tekst={clanak.izvor} razmak="mt-0 px-2 pb-1" />
           </div>
         )}
-        <div className={clanak.bezSlike ? "col-12 card-body d-flex flex-column text-center" : "col-12 col-sm-8 card-body"}>
+        <div className={clanak.bezSlike ? "col-12 card-body d-flex flex-column text-center" : "col-12 col-sm-8 card-body d-flex flex-column"}>
           {/* bez slike: naslov na vrhu u sredini */}
           {clanak.bezSlike && naslov}
           {/* članci bez datuma (opisi poslova) ga ne prikazuju */}
@@ -70,7 +70,7 @@ function Post({ clanak, id, aktivan, podijeljeno, onOtvori }) {
 
           <button
             id={`gumb-clanka-${id}`}
-            className={"btn btn-outline-success gumb-clanak d-inline-flex mt-auto " + (clanak.bezSlike ? "align-self-center" : "align-self-start")}
+            className="btn btn-outline-success gumb-clanak d-inline-flex mt-auto align-self-end" // donji desni ugao kartice
             aria-haspopup={podijeljeno ? undefined : "dialog"}
             aria-current={aktivan ? "true" : undefined}
             onClick={onOtvori}
