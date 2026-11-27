@@ -74,8 +74,6 @@ body { background: var(--bs-tertiary-bg); }
   background: #fff; border: 5px solid #000; border-radius: .5rem; padding: 1rem 1.5rem 1.5rem;
 }
 .clanak-panel:focus { outline: none; }
-/* članak otvoren iz izbornika "Vrste poslova": na svom mjestu u popisu, pomiče se sa stranicom */
-.clanak-panel.clanak-u-mjestu { position: static; max-height: none; overflow: visible; }
 
 /* Postupak: strelica prema dolje lijevo od kartica, s rednim brojem uz svaku karticu */
 .korak { margin-bottom: 1.5rem; }
