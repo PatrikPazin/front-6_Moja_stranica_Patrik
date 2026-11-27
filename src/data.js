@@ -33,7 +33,7 @@ export const oNama = {
 export const kontakt = {
   tel: "+385 52 123 456",
   mob: "+385 91 234 5678",
-  email: "info@geodetski-ured.hr",
+  email: "info@geopiket.hr",
   adresa: "Ulica primjera 1, 52000 Pazin",
   oib: "00000000000 (primjer)", // izmišljeni broj za školski projekt
 };
