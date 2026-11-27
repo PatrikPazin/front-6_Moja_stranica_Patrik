@@ -121,7 +121,7 @@ function Kontakt() {
             {stanje === "greska" && <div className="alert alert-danger" role="alert">Niste pravilno ispunili podatke. Molim pokušajte ponovo</div>}
             {stanje === "greska-posluzitelj" && <div className="alert alert-danger" role="alert">{poruka}</div>}
             <p className="text-black">
-              Podatke koristimo samo da odgovorimo na vaš upit. Više u <Link to="/privatnost" className="text-black">Izjavi o privatnosti</Link>.
+              Podatke koristimo samo da odgovorimo na vaš upit. Više u <Link to="/privatnost" className="text-black" target="_blank" rel="noopener">Izjavi o privatnosti<span className="visually-hidden"> (otvara se u novoj kartici)</span></Link>.
             </p>
             <button type="submit" className="btn gumb-crveni">Pošalji upit</button>
           </form>
